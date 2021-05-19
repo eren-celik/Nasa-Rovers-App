@@ -19,8 +19,21 @@ enum CameraName: String, Codable {
     case MINITES    = "Miniature Thermal Emission Spectrometer (Mini-TES)"
 }
 
-enum RoverNames: String {
+enum RoverNames: String , CaseIterable {
     case curiosity = "Curiosity"
     case opportunity = "Opportunity"
     case spirit = "Spirit"
+    
+    var iconName : String {
+        get{
+            switch self {
+            case .curiosity:
+                return "circle.grid.2x2"
+            case .opportunity:
+                return "circle.grid.2x2.fill"
+            case .spirit:
+                return "circle.grid.2x2"
+            }
+        }
+    }
 }

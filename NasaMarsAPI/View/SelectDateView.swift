@@ -17,7 +17,7 @@ struct SelectDateView: View {
     
     @State private var selectedDate : Date = Date()
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject private var helperService = ApiHelperService()
+    @ObservedObject private var helperService = NasaAPIViewModel()
     
     var body: some View {
         VStack {

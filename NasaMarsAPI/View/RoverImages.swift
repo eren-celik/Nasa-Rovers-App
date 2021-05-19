@@ -14,13 +14,11 @@ struct RoverImages: View {
     var body: some View {
         NavigationView{
             List{
-                ForEach(service.photosArray) { id in
+                ForEach(service.curiostyDataArray) { id in
                     Text(id.camera.fullName)
                 }
             }
-            .onAppear() {
-                service.getPhotos()
-            }
+
         }
     }
 }

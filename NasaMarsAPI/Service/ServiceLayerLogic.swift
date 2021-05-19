@@ -8,13 +8,11 @@
 import Foundation
 import Combine
 
-
-
 protocol ServiceLayerLogicProtocol: AnyObject {
     
     var networkProtocol: NetworkProtocol { get }
     
-    func getRoverPhotosByEarthDate() -> AnyPublisher<RoverPhotosModel, Error>
+    func getRoverPhotosByEarthDate(roverType: RoverNames) -> AnyPublisher<RoverPhotosModel, Error>
     
 }
 
@@ -27,9 +25,9 @@ final class UsersLogicController: ServiceLayerLogicProtocol {
         self.networkProtocol = networkProtocol
     }
     
-    func getRoverPhotosByEarthDate() -> AnyPublisher<RoverPhotosModel, Error> {
+    func getRoverPhotosByEarthDate(roverType: RoverNames) -> AnyPublisher<RoverPhotosModel, Error> {
         let endpoint = Endpoint().getByEarthDate(page: 1)
-        return networkProtocol.getDataFromServer(url: endpoint.url(roverType: .curiosity),
+        return networkProtocol.getDataFromServer(url: endpoint.url(roverType: roverType),
                                                  dataDecodingType: RoverPhotosModel.self,
                                                  receiveQueue: .main)
     }
