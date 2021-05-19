@@ -3,16 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */; };
-		10CA2F082655010C00AAC540 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F072655010C00AAC540 /* ContentView.swift */; };
+		10CA2F082655010C00AAC540 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F072655010C00AAC540 /* MainView.swift */; };
 		10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F092655011200AAC540 /* Assets.xcassets */; };
 		10CA2F0D2655011200AAC540 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F0C2655011200AAC540 /* Preview Assets.xcassets */; };
 		10CA2F182655011200AAC540 /* NasaMarsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F172655011200AAC540 /* NasaMarsAPITests.swift */; };
 		10CA2F232655011200AAC540 /* NasaMarsAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F222655011200AAC540 /* NasaMarsAPIUITests.swift */; };
+		10CA2F362655029300AAC540 /* cameraInformationByDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* cameraInformationByDate.json */; };
+		10CA2F39265502CB00AAC540 /* getPhotosByEarthDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */; };
+		10CA2F3D2655056800AAC540 /* ServiceLayerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */; };
+		10CA2F432655103300AAC540 /* RoverPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F422655103300AAC540 /* RoverPhotosModel.swift */; };
+		10CA2F472655124400AAC540 /* NasaAPINetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */; };
+		10CA2F482655157E00AAC540 /* cameraInformationByDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* cameraInformationByDate.json */; };
+		10CA2F492655158100AAC540 /* getPhotosByEarthDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */; };
+		10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4A2655491200AAC540 /* Endpoints.swift */; };
+		10CA2F4D2655495E00AAC540 /* NasaAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */; };
+		10CA2F50265549A500AAC540 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10CA2F4F265549A500AAC540 /* SDWebImageSwiftUI */; };
+		10CA2F52265549B800AAC540 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F51265549B800AAC540 /* NetworkProtocol.swift */; };
+		10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */; };
+		10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +48,7 @@
 /* Begin PBXFileReference section */
 		10CA2F022655010C00AAC540 /* NasaMarsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaMarsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaMarsAPIApp.swift; sourceTree = "<group>"; };
-		10CA2F072655010C00AAC540 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		10CA2F072655010C00AAC540 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		10CA2F092655011200AAC540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10CA2F0C2655011200AAC540 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		10CA2F0E2655011200AAC540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +58,16 @@
 		10CA2F1E2655011200AAC540 /* NasaMarsAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NasaMarsAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CA2F222655011200AAC540 /* NasaMarsAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaMarsAPIUITests.swift; sourceTree = "<group>"; };
 		10CA2F242655011200AAC540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10CA2F352655029300AAC540 /* cameraInformationByDate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraInformationByDate.json; sourceTree = "<group>"; };
+		10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = getPhotosByEarthDate.json; sourceTree = "<group>"; };
+		10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerLogic.swift; sourceTree = "<group>"; };
+		10CA2F422655103300AAC540 /* RoverPhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosModel.swift; sourceTree = "<group>"; };
+		10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPINetworkTest.swift; sourceTree = "<group>"; };
+		10CA2F4A2655491200AAC540 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPIViewModel.swift; sourceTree = "<group>"; };
+		10CA2F51265549B800AAC540 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelpers.swift; sourceTree = "<group>"; };
+		10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rover+HelperEnums.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA2F50265549A500AAC540 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +119,12 @@
 		10CA2F042655010C00AAC540 /* NasaMarsAPI */ = {
 			isa = PBXGroup;
 			children = (
+				10CA2F342655020500AAC540 /* Utilities */,
+				10CA2F33265501FF00AAC540 /* Service */,
+				10CA2F32265501F900AAC540 /* ViewModel */,
+				10CA2F31265501F200AAC540 /* Model */,
+				10CA2F30265501E600AAC540 /* View */,
 				10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */,
-				10CA2F072655010C00AAC540 /* ContentView.swift */,
 				10CA2F092655011200AAC540 /* Assets.xcassets */,
 				10CA2F0E2655011200AAC540 /* Info.plist */,
 				10CA2F0B2655011200AAC540 /* Preview Content */,
@@ -117,6 +145,7 @@
 			children = (
 				10CA2F172655011200AAC540 /* NasaMarsAPITests.swift */,
 				10CA2F192655011200AAC540 /* Info.plist */,
+				10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */,
 			);
 			path = NasaMarsAPITests;
 			sourceTree = "<group>";
@@ -128,6 +157,59 @@
 				10CA2F242655011200AAC540 /* Info.plist */,
 			);
 			path = NasaMarsAPIUITests;
+			sourceTree = "<group>";
+		};
+		10CA2F30265501E600AAC540 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F072655010C00AAC540 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		10CA2F31265501F200AAC540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F422655103300AAC540 /* RoverPhotosModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		10CA2F32265501F900AAC540 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		10CA2F33265501FF00AAC540 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F4A2655491200AAC540 /* Endpoints.swift */,
+				10CA2F51265549B800AAC540 /* NetworkProtocol.swift */,
+				10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */,
+				10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */,
+				10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		10CA2F342655020500AAC540 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F37265502A700AAC540 /* JsonData */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		10CA2F37265502A700AAC540 /* JsonData */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F352655029300AAC540 /* cameraInformationByDate.json */,
+				10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */,
+			);
+			path = JsonData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +228,9 @@
 			dependencies = (
 			);
 			name = NasaMarsAPI;
+			packageProductDependencies = (
+				10CA2F4F265549A500AAC540 /* SDWebImageSwiftUI */,
+			);
 			productName = NasaMarsAPI;
 			productReference = 10CA2F022655010C00AAC540 /* NasaMarsAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +302,9 @@
 				Base,
 			);
 			mainGroup = 10CA2EF92655010C00AAC540;
+			packageReferences = (
+				10CA2F4E265549A500AAC540 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 10CA2F032655010C00AAC540 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +321,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA2F362655029300AAC540 /* cameraInformationByDate.json in Resources */,
 				10CA2F0D2655011200AAC540 /* Preview Assets.xcassets in Resources */,
+				10CA2F39265502CB00AAC540 /* getPhotosByEarthDate.json in Resources */,
 				10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +332,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA2F482655157E00AAC540 /* cameraInformationByDate.json in Resources */,
+				10CA2F492655158100AAC540 /* getPhotosByEarthDate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +351,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10CA2F082655010C00AAC540 /* ContentView.swift in Sources */,
+				10CA2F082655010C00AAC540 /* MainView.swift in Sources */,
+				10CA2F4D2655495E00AAC540 /* NasaAPIViewModel.swift in Sources */,
+				10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */,
+				10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */,
 				10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */,
+				10CA2F432655103300AAC540 /* RoverPhotosModel.swift in Sources */,
+				10CA2F52265549B800AAC540 /* NetworkProtocol.swift in Sources */,
+				10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */,
+				10CA2F3D2655056800AAC540 /* ServiceLayerLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA2F472655124400AAC540 /* NasaAPINetworkTest.swift in Sources */,
 				10CA2F182655011200AAC540 /* NasaMarsAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +522,7 @@
 				DEVELOPMENT_TEAM = C4BB468227;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NasaMarsAPI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -444,7 +544,7 @@
 				DEVELOPMENT_TEAM = C4BB468227;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NasaMarsAPI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,7 +564,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4BB468227;
 				INFOPLIST_FILE = NasaMarsAPITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4BB468227;
 				INFOPLIST_FILE = NasaMarsAPITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,6 +680,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10CA2F4E265549A500AAC540 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10CA2F4F265549A500AAC540 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CA2F4E265549A500AAC540 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 10CA2EFA2655010C00AAC540 /* Project object */;
 }
