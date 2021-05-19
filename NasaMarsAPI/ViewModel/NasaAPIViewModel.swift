@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 final class NasaAPIViewModel : ObservableObject{
-    @Published var photosArray = PhotoArray()
+    @Published var photosArray : [Photo] = PhotoArray()
     
     private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
     private var cancellable = Set<AnyCancellable>()
     
     func getPhotos(){
-        serviceLayer.getRoverPhotos()
+        serviceLayer.getRoverPhotosByEarthDate()
             .sink { status in
                 switch status{
                 case .finished:
@@ -26,9 +26,13 @@ final class NasaAPIViewModel : ObservableObject{
                     #endif
                 }
             } receiveValue: { [weak self] value in
-                print(value)
+                print("DEBUG: " , value.photos.count)
                 self?.photosArray = value.photos
             }
             .store(in: &cancellable)
     }
+}
+
+final class ApiHelperService : ObservableObject {
+    @Published var selectedDate : String = ""
 }

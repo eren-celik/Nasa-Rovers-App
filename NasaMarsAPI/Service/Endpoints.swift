@@ -11,26 +11,39 @@ struct Endpoint {
     var queryItems: [URLQueryItem] = []
 }
 
+//URL Body
 extension Endpoint {
-    var url: URL {
+    func url(roverType: RoverNames) -> URL{
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.nasa.gov"
-        components.path = "/mars-photos/api/v1/rovers/curiosity/photos"
+        components.path = "/mars-photos/api/v1/rovers/\(roverType)/photos"
         components.queryItems = queryItems
         
         guard let url = components.url else {
-            preconditionFailure("Invalid URL components: \(components)")
+            fatalError("Invalid URL Components: \(components)")
         }
         return url
+        
     }
 }
 
+//Query Parameters
 extension Endpoint {
-    static var rovers: Self {
+    
+    func getByEarthDate(page: Int) -> Self {
         return Endpoint(queryItems: [
             URLQueryItem(name: "earth_date", value: "2021-5-1"),
-            URLQueryItem(name: "api_key", value: "50reqbOzD2VPIr6r6ofb77netEOwPPCA3Ne730qH")
+            URLQueryItem(name: "api_key", value: "50reqbOzD2VPIr6r6ofb77netEOwPPCA3Ne730qH"),
+            URLQueryItem(name: "page", value: "\(page)")
+        ])
+    }
+    
+    func getBySolDay(solDay : Int, page: Int) -> Self {
+        return Endpoint(queryItems: [
+            URLQueryItem(name: "sol", value: "\(solDay)"),
+            URLQueryItem(name: "api_key", value: "50reqbOzD2VPIr6r6ofb77netEOwPPCA3Ne730qH"),
+            URLQueryItem(name: "page", value: "\(page)")
         ])
     }
 }
