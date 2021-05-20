@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CameraName: String, Codable {
+enum CameraName: String {
     case FHAZ       = "Front Hazard Avoidance Camera"
     case RHAZ       = "Rear Hazard Avoidance Camera"
     case MAST       = "Mast Camera"
@@ -17,6 +17,7 @@ enum CameraName: String, Codable {
     case NAVCAM     = "Navigation Camera"
     case PANCAM     = "Panoramic Camera"
     case MINITES    = "Miniature Thermal Emission Spectrometer (Mini-TES)"
+    case all        = "All camera positions"
 }
 
 enum RoverNames: String , CaseIterable {

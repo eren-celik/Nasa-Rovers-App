@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpiritRoverView: View {
     @Binding var showSelectCamera: Bool
-
+    
     @EnvironmentObject private var service : NasaAPIViewModel
     private let gridItemLayout = [GridItem(.adaptive(minimum: 150, maximum: 170),spacing: 20)]
     

@@ -12,7 +12,8 @@ protocol ServiceLayerLogicProtocol: AnyObject {
     
     var networkProtocol: NetworkProtocol { get }
     
-    func getRoverPhotosByEarthDate(roverType: RoverNames) -> AnyPublisher<RoverPhotosModel, Error>
+    func getRoverPhotos(roverType: RoverNames,
+                        endPointType: Endpoint) -> AnyPublisher<RoverPhotosModel, Error>
     
 }
 
@@ -20,15 +21,16 @@ protocol ServiceLayerLogicProtocol: AnyObject {
 final class UsersLogicController: ServiceLayerLogicProtocol {
     
     internal var networkProtocol: NetworkProtocol
-    
     init(networkProtocol : NetworkProtocol) {
         self.networkProtocol = networkProtocol
     }
     
-    func getRoverPhotosByEarthDate(roverType: RoverNames) -> AnyPublisher<RoverPhotosModel, Error> {
-        let endpoint = Endpoint().getByEarthDate(page: 1)
-        return networkProtocol.getDataFromServer(url: endpoint.url(roverType: roverType),
+    func getRoverPhotos(roverType: RoverNames,
+                        endPointType: Endpoint) -> AnyPublisher<RoverPhotosModel, Error> {
+        
+        return networkProtocol.getDataFromServer(url: endPointType.url(roverType: roverType),
                                                  dataDecodingType: RoverPhotosModel.self,
                                                  receiveQueue: .main)
     }
+    
 }

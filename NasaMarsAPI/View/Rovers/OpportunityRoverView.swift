@@ -17,7 +17,7 @@ struct OpportunityRoverView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                    ForEach(service.curiostyDataArray) { value in
+                    ForEach(service.opportunityDataArray) { value in
                         PhotosCellView(photosModel: value)
                     }
                 }

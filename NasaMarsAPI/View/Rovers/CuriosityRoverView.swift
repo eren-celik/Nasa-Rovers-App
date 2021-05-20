@@ -16,12 +16,9 @@ struct CuriosityRoverView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns:  gridItemLayout, spacing : 20) {
-                    ForEach(1...20,id : \.self) { value in
-                        RoundedRectangle(cornerRadius: 25.0)
-                            .frame(width: 170, height: 170)
-                            .foregroundColor(.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                LazyVGrid(columns: gridItemLayout , spacing : 20) {
+                    ForEach(service.curiostyDataArray) { value in
+                        PhotosCellView(photosModel: value)
                     }
                 }
             }

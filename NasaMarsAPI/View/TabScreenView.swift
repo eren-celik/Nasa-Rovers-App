@@ -24,7 +24,7 @@ struct TabScreenView: View {
                 .environmentObject(service)
                 .tabItem {
                     Image(systemName:  RoverNames.opportunity.iconName).font(.system(size: 26))
-                    Text( RoverNames.opportunity.rawValue)
+                    Text(RoverNames.opportunity.rawValue)
                 }
             
             SpiritRoverView(showSelectCamera: $showSelectCamera)
@@ -38,8 +38,9 @@ struct TabScreenView: View {
             Text("Sheet")
         })
         .onAppear(){
-            service.getSpiritRoverData()
-            service.getCuriosityRoverData()
+            service.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: "2021-5-1", page: 1, camera: .all))
+            service.getOpportunityRoverData(endPointType: .shared.getBySolDay(solDay: 5091, page: 1, camera: .all))
+            service.getSpiritRoverData(endPointType: .shared.getBySolDay(solDay: 2122, page: 1, camera: .all))
         }
     }
 }

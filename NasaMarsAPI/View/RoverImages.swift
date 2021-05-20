@@ -18,7 +18,7 @@ struct RoverImages: View {
                     Text(id.camera.fullName)
                 }
             }
-
+            
         }
     }
 }
