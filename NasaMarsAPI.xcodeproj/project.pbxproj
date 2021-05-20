@@ -28,6 +28,7 @@
 		10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */; };
 		10CA2F5826555AD000AAC540 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5726555AD000AAC540 /* SelectDateView.swift */; };
 		10CA2F5A265561BB00AAC540 /* RoverDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */; };
+		10FB386E2656871D004A51B1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FB386D2656871D004A51B1 /* Extensions.swift */; };
 		B04BA6EA2655A9750034297C /* CuriosityRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6E92655A9750034297C /* CuriosityRoverView.swift */; };
 		B04BA6EC2655A9840034297C /* OpportunityRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6EB2655A9840034297C /* OpportunityRoverView.swift */; };
 		B04BA6EE2655A98D0034297C /* SpiritRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */; };
@@ -76,6 +77,7 @@
 		10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rover+HelperEnums.swift"; sourceTree = "<group>"; };
 		10CA2F5726555AD000AAC540 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateView.swift; sourceTree = "<group>"; };
 		10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverDetailCard.swift; sourceTree = "<group>"; };
+		10FB386D2656871D004A51B1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B04BA6E92655A9750034297C /* CuriosityRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuriosityRoverView.swift; sourceTree = "<group>"; };
 		B04BA6EB2655A9840034297C /* OpportunityRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityRoverView.swift; sourceTree = "<group>"; };
 		B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritRoverView.swift; sourceTree = "<group>"; };
@@ -136,7 +138,6 @@
 				10CA2F32265501F900AAC540 /* ViewModel */,
 				10CA2F31265501F200AAC540 /* Model */,
 				10CA2F30265501E600AAC540 /* View */,
-				10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */,
 				10CA2F092655011200AAC540 /* Assets.xcassets */,
 				10CA2F0E2655011200AAC540 /* Info.plist */,
 				10CA2F0B2655011200AAC540 /* Preview Content */,
@@ -174,11 +175,10 @@
 		10CA2F30265501E600AAC540 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */,
+				10FB386C26566956004A51B1 /* HelperUI */,
 				B04BA6E82655A93B0034297C /* Rovers */,
 				10CA2F072655010C00AAC540 /* TabScreenView.swift */,
-				10CA2F5726555AD000AAC540 /* SelectDateView.swift */,
-				10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */,
-				B04BA6EF2655B30D0034297C /* PhotosCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				10CA2F37265502A700AAC540 /* JsonData */,
+				10FB386D2656871D004A51B1 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -226,6 +227,16 @@
 				10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */,
 			);
 			path = JsonData;
+			sourceTree = "<group>";
+		};
+		10FB386C26566956004A51B1 /* HelperUI */ = {
+			isa = PBXGroup;
+			children = (
+				10CA2F5726555AD000AAC540 /* SelectDateView.swift */,
+				10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */,
+				B04BA6EF2655B30D0034297C /* PhotosCellView.swift */,
+			);
+			path = HelperUI;
 			sourceTree = "<group>";
 		};
 		B04BA6E82655A93B0034297C /* Rovers */ = {
@@ -388,6 +399,7 @@
 				10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */,
 				10CA2F432655103300AAC540 /* RoverPhotosModel.swift in Sources */,
 				B04BA6EC2655A9840034297C /* OpportunityRoverView.swift in Sources */,
+				10FB386E2656871D004A51B1 /* Extensions.swift in Sources */,
 				B04BA6EA2655A9750034297C /* CuriosityRoverView.swift in Sources */,
 				10CA2F52265549B800AAC540 /* NetworkProtocol.swift in Sources */,
 				10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */,

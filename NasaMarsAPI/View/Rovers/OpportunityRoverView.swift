@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct OpportunityRoverView: View {
-    @Binding var showSelectCamera : Bool
+    @Binding var showSelectCamera: Bool
+    @Binding var showDetailCard  : Bool
     
     @EnvironmentObject private var service : NasaAPIViewModel
-    private let gridItemLayout = [GridItem(.adaptive(minimum: 150, maximum: 170),spacing: 20)]
+    private let gridItemLayout = [
+        GridItem(.adaptive(minimum: 150, maximum: 170),spacing: 20)
+    ]
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout , spacing : 20) {
                     ForEach(service.opportunityDataArray) { value in
-                        PhotosCellView(photosModel: value)
+                        PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
+                            .environmentObject(service)
                     }
                 }
             }
@@ -35,7 +39,7 @@ struct OpportunityRoverView: View {
 
 struct Opportunity_Previews: PreviewProvider {
     static var previews: some View {
-        OpportunityRoverView(showSelectCamera: .constant(false))
+        OpportunityRoverView(showSelectCamera: .constant(false), showDetailCard: .constant(false))
             .environmentObject(NasaAPIViewModel())
     }
 }

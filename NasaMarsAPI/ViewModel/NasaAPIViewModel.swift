@@ -19,6 +19,8 @@ final class NasaAPIViewModel : ObservableObject{
     @Published var opportunityDataArray : [Photo] = PhotoArray()
     @Published var spiritDataArray : [Photo] = PhotoArray()
     
+    @Published var photoDetailData : Photo?
+    
     @Published var selectedDate : String = ""
     @Published var dataStatus : DataStatus = .full
     
