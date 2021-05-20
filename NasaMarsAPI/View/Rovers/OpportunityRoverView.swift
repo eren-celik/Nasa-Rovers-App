@@ -10,6 +10,7 @@ import SwiftUI
 struct OpportunityRoverView: View {
     @Binding var showSelectCamera: Bool
     @Binding var showDetailCard  : Bool
+    @Binding var showCalendar    : Bool
     
     @EnvironmentObject private var service : NasaAPIViewModel
     private let gridItemLayout = [
@@ -18,28 +19,45 @@ struct OpportunityRoverView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                    ForEach(service.opportunityDataArray) { value in
-                        PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
-                            .environmentObject(service)
+            Group{
+                switch service.dataStatus{
+                case .empty:
+                    Text("No Data Found")
+                case .full:
+                    mainView
+                case .error:
+                    Text("Error An Occurred")
+                case .loading:
+                    ProgressView {
+                        Text("Loading...")
                     }
                 }
             }
             .navigationTitle(RoverNames.opportunity.rawValue)
-            .navigationBarItems(trailing: Button(action: {
-                showSelectCamera.toggle()
-            }, label: {
-                Image(systemName: "line.horizontal.3.decrease")
-                    .imageScale(.large)
-            }))
+            .toolbar {
+                CustomToolbarItems(showCalendar: $showCalendar,
+                                   showCameraFilterView: $showSelectCamera)
+            }
+        }
+    }
+    
+    private var mainView: some View {
+        ScrollView {
+            LazyVGrid(columns: gridItemLayout , spacing : 20) {
+                ForEach(service.opportunityDataArray) { value in
+                    PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
+                        .environmentObject(service)
+                }
+            }
         }
     }
 }
 
 struct Opportunity_Previews: PreviewProvider {
     static var previews: some View {
-        OpportunityRoverView(showSelectCamera: .constant(false), showDetailCard: .constant(false))
+        OpportunityRoverView(showSelectCamera: .constant(false),
+                             showDetailCard: .constant(false),
+                             showCalendar: .constant(false))
             .environmentObject(NasaAPIViewModel())
     }
 }

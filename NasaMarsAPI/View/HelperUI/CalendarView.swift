@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectDateView: View {
+struct CalendarView: View {
     
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
@@ -112,6 +112,6 @@ struct SelectDateView: View {
 
 struct SelectDateView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectDateView()
+        CalendarView()
     }
 }

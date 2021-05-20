@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SpiritRoverView: View {
+    @EnvironmentObject private var service : NasaAPIViewModel
+    
     @Binding var showSelectCamera: Bool
     @Binding var showDetailCard  : Bool
-    
-    @EnvironmentObject private var service : NasaAPIViewModel
+    @Binding var showCalendar    : Bool
     
     private let gridItemLayout = [
         GridItem(.adaptive(minimum: 150, maximum: 170),spacing: 20)
@@ -19,28 +20,44 @@ struct SpiritRoverView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                    ForEach(service.spiritDataArray) { value in
-                        PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
-                            .environmentObject(service)
+            Group{
+                switch service.dataStatus{
+                case .empty:
+                    Text("No Data Found")
+                case .full:
+                    mainView
+                case .error:
+                    Text("Error An Occurred")
+                case .loading:
+                    ProgressView {
+                        Text("Loading...")
                     }
                 }
             }
             .navigationTitle(RoverNames.spirit.rawValue)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        showSelectCamera.toggle()
-                                    }, label: {
-                                        Image(systemName: "line.horizontal.3.decrease")
-                                            .imageScale(.large)
-                                    }))
+            .toolbar {
+                CustomToolbarItems(showCalendar: $showCalendar,
+                                   showCameraFilterView: $showSelectCamera)
+            }
+        }
+    }
+    private var mainView : some View{
+        
+        ScrollView {
+            LazyVGrid(columns: gridItemLayout , spacing : 20) {
+                ForEach(service.spiritDataArray) { value in
+                    PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
+                        .environmentObject(service)
+                }
+            }
         }
     }
 }
 
 struct Spirit_Previews: PreviewProvider {
     static var previews: some View {
-        SpiritRoverView(showSelectCamera: .constant(false), showDetailCard: .constant(false))
+        SpiritRoverView(showSelectCamera: .constant(false),
+                        showDetailCard: .constant(false),
+                        showCalendar: .constant(false))
     }
 }

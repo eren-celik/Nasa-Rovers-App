@@ -12,6 +12,7 @@ enum DataStatus{
     case full
     case empty
     case error
+    case loading
 }
 
 final class NasaAPIViewModel : ObservableObject{
@@ -60,6 +61,7 @@ extension NasaAPIViewModel{
 extension NasaAPIViewModel {
     
     func getCuriosityRoverData(endPointType: Endpoint) {
+        dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .curiosity,
                                     endPointType: endPointType)
             .sink (receiveCompletion: onRecive(_:),
@@ -68,6 +70,7 @@ extension NasaAPIViewModel {
                         self?.dataStatus = .empty
                     }else{
                         self?.curiostyDataArray = value.photos
+                        self?.dataStatus = .full
                     }
                    }
             )
@@ -75,11 +78,8 @@ extension NasaAPIViewModel {
     }
     
     
-    
-    
-    
-    
     func getOpportunityRoverData(endPointType: Endpoint){
+        dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .opportunity,
                                     endPointType: endPointType)
             .sink(receiveCompletion: onRecive(_:),
@@ -88,6 +88,7 @@ extension NasaAPIViewModel {
                         self?.dataStatus = .empty
                     }else{
                         self?.opportunityDataArray = value.photos
+                        self?.dataStatus = .full
                     }
                   }
             )
@@ -95,6 +96,7 @@ extension NasaAPIViewModel {
     }
     
     func getSpiritRoverData(endPointType: Endpoint) {
+        dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .spirit,
                                     endPointType: endPointType)
             .sink (receiveCompletion: onRecive(_:),
@@ -103,6 +105,7 @@ extension NasaAPIViewModel {
                         self?.dataStatus = .empty
                     }else{
                         self?.spiritDataArray = value.photos
+                        self?.dataStatus = .full
                     }
                    }
             )

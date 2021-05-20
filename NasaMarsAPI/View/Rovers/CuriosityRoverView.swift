@@ -10,6 +10,8 @@ import SwiftUI
 struct CuriosityRoverView: View {
     @Binding var showSelectCamera: Bool
     @Binding var showDetailCard  : Bool
+    @Binding var showCalendar    : Bool
+    
     @EnvironmentObject private var service : NasaAPIViewModel
     
     private let gridItemLayout = [
@@ -18,32 +20,46 @@ struct CuriosityRoverView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                    ForEach(service.curiostyDataArray) { value in
-                        PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
-                            .environmentObject(service)
+            Group{
+                switch service.dataStatus {
+                case .empty:
+                    Text("No Data Found")
+                case .full:
+                    mainView
+                case .error:
+                    Text("Error An Occured")
+                case .loading:
+                    ProgressView {
+                        Text("Loading...")
                     }
                 }
             }
             .navigationTitle(RoverNames.curiosity.rawValue)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        withAnimation(.easeInOut) {
-                                            showSelectCamera.toggle()
-                                        }
-                                    }, label: {
-                                        Image(systemName: "line.horizontal.3.decrease")
-                                            .imageScale(.large)
-                                    })
-            )
+            .toolbar {
+                CustomToolbarItems(showCalendar: $showCalendar,
+                                   showCameraFilterView: $showSelectCamera)
+            }
         }
+    }
+    
+    var mainView: some View{
+        ScrollView {
+            LazyVGrid(columns: gridItemLayout , spacing : 20) {
+                ForEach(service.curiostyDataArray) { value in
+                    PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
+                        .environmentObject(service)
+                }
+            }
+        }
+        
     }
 }
 
 struct CuriosityView_Previews: PreviewProvider {
     static var previews: some View {
-        CuriosityRoverView(showSelectCamera: .constant(false), showDetailCard: .constant(false))
+        CuriosityRoverView(showSelectCamera: .constant(false),
+                           showDetailCard: .constant(false),
+                           showCalendar: .constant(false))
             .environmentObject(NasaAPIViewModel())
     }
 }

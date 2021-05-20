@@ -13,40 +13,49 @@ struct TabScreenView: View {
     
     @State private var showDetailCard : Bool = false
     @State private var showSelectCameraFilter : Bool = false
+    @State private var showCalendar : Bool = false
     @State private var cameraPosition : CameraName = CameraName.all
     @State private var data : Photo?
     
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                CuriosityRoverView(showSelectCamera: $showSelectCameraFilter, showDetailCard: $showDetailCard)
+                CuriosityRoverView(showSelectCamera: $showSelectCameraFilter,
+                                   showDetailCard: $showDetailCard,
+                                   showCalendar: $showCalendar)
                     .environmentObject(apiService)
                     .tabItem {
-                        Image(systemName:  RoverNames.curiosity.iconName)
-                        Text(RoverNames.curiosity.rawValue)
+                        Label(RoverNames.curiosity.rawValue,
+                              systemImage: RoverNames.curiosity.iconName)
                     }
                     .tag(ViewsNames.curiosity)
                 
-                OpportunityRoverView(showSelectCamera: $showSelectCameraFilter, showDetailCard: $showDetailCard)
+                OpportunityRoverView(showSelectCamera: $showSelectCameraFilter,
+                                     showDetailCard: $showDetailCard,
+                                     showCalendar: $showCalendar)
                     .environmentObject(apiService)
                     .tabItem {
-                        Image(systemName:  RoverNames.opportunity.iconName).font(.system(size: 26))
-                        Text(RoverNames.opportunity.rawValue)
+                        Label(RoverNames.opportunity.rawValue,
+                              systemImage: RoverNames.opportunity.iconName)
                     }
                     .tag(ViewsNames.opportunity)
                 
-                SpiritRoverView(showSelectCamera: $showSelectCameraFilter, showDetailCard: $showDetailCard)
+                SpiritRoverView(showSelectCamera: $showSelectCameraFilter,
+                                showDetailCard: $showDetailCard, showCalendar: $showCalendar)
                     .environmentObject(apiService)
                     .tabItem {
-                        Image(systemName: RoverNames.spirit.iconName)
-                        Text(RoverNames.spirit.rawValue)
+                        Label(RoverNames.spirit.rawValue,
+                              systemImage: RoverNames.spirit.iconName)
                     }
                     .tag(ViewsNames.spirit)
             }
+            .sheet(isPresented: $showCalendar, content: {
+                CalendarView()
+            })
             .onChange(of: selectedTab, perform: { value in
                 apiService.selectedPage = value
             })
-            .onAppear(){
+            .onAppear {
                 apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: "2021-5-1",
                                                                                       page: 1,
                                                                                       camera: cameraPosition))
@@ -70,7 +79,6 @@ struct TabScreenView: View {
                                  closeCard: $showSelectCameraFilter)
                     .animation(.easeInOut)
                     .onDisappear {
-                        //Todo : Add Loading Indicator
                         switch selectedTab {
                         case .curiosity:
                             apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: "2021-5-1",
