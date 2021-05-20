@@ -27,7 +27,7 @@
 		10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */; };
 		10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */; };
 		10CA2F5826555AD000AAC540 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5726555AD000AAC540 /* SelectDateView.swift */; };
-		10CA2F5A265561BB00AAC540 /* RoverImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F59265561BB00AAC540 /* RoverImages.swift */; };
+		10CA2F5A265561BB00AAC540 /* RoverDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */; };
 		B04BA6EA2655A9750034297C /* CuriosityRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6E92655A9750034297C /* CuriosityRoverView.swift */; };
 		B04BA6EC2655A9840034297C /* OpportunityRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6EB2655A9840034297C /* OpportunityRoverView.swift */; };
 		B04BA6EE2655A98D0034297C /* SpiritRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */; };
@@ -75,7 +75,7 @@
 		10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelpers.swift; sourceTree = "<group>"; };
 		10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rover+HelperEnums.swift"; sourceTree = "<group>"; };
 		10CA2F5726555AD000AAC540 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateView.swift; sourceTree = "<group>"; };
-		10CA2F59265561BB00AAC540 /* RoverImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImages.swift; sourceTree = "<group>"; };
+		10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverDetailCard.swift; sourceTree = "<group>"; };
 		B04BA6E92655A9750034297C /* CuriosityRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuriosityRoverView.swift; sourceTree = "<group>"; };
 		B04BA6EB2655A9840034297C /* OpportunityRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityRoverView.swift; sourceTree = "<group>"; };
 		B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritRoverView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				B04BA6E82655A93B0034297C /* Rovers */,
 				10CA2F072655010C00AAC540 /* TabScreenView.swift */,
 				10CA2F5726555AD000AAC540 /* SelectDateView.swift */,
-				10CA2F59265561BB00AAC540 /* RoverImages.swift */,
+				10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */,
 				B04BA6EF2655B30D0034297C /* PhotosCellView.swift */,
 			);
 			path = View;
@@ -382,7 +382,7 @@
 				10CA2F082655010C00AAC540 /* TabScreenView.swift in Sources */,
 				10CA2F4D2655495E00AAC540 /* NasaAPIViewModel.swift in Sources */,
 				10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */,
-				10CA2F5A265561BB00AAC540 /* RoverImages.swift in Sources */,
+				10CA2F5A265561BB00AAC540 /* RoverDetailCard.swift in Sources */,
 				10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */,
 				B04BA6EE2655A98D0034297C /* SpiritRoverView.swift in Sources */,
 				10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */,
