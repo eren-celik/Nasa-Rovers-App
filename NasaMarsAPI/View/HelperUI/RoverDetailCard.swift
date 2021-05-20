@@ -59,6 +59,7 @@ struct RoverDetailCard: View {
             }else{
                 Text("Error An Occured Try Another Image")
                     .font(.system(.title3, design: .rounded))
+                    .padding(20)
             }
             
             Button(action: {

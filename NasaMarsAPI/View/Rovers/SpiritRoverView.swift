@@ -28,12 +28,13 @@ struct SpiritRoverView: View {
                 }
             }
             .navigationTitle(RoverNames.spirit.rawValue)
-            .navigationBarItems(trailing: Button(action: {
-                showSelectCamera.toggle()
-            }, label: {
-                Image(systemName: "line.horizontal.3.decrease")
-                    .imageScale(.large)
-            }))
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                                        showSelectCamera.toggle()
+                                    }, label: {
+                                        Image(systemName: "line.horizontal.3.decrease")
+                                            .imageScale(.large)
+                                    }))
         }
     }
 }
