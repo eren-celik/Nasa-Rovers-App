@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		108F43122657F1BE0089A636 /* ARRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F43112657F1BE0089A636 /* ARRoverView.swift */; };
-		108F43142657FA7B0089A636 /* PhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F43132657FA7B0089A636 /* PhotoGridView.swift */; };
 		10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */; };
 		10CA2F082655010C00AAC540 /* TabScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F072655010C00AAC540 /* TabScreenView.swift */; };
 		10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F092655011200AAC540 /* Assets.xcassets */; };
@@ -23,7 +22,7 @@
 		10CA2F482655157E00AAC540 /* cameraInformationByDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* cameraInformationByDate.json */; };
 		10CA2F492655158100AAC540 /* getPhotosByEarthDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */; };
 		10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4A2655491200AAC540 /* Endpoints.swift */; };
-		10CA2F4D2655495E00AAC540 /* NasaAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */; };
+		10CA2F4D2655495E00AAC540 /* RoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4C2655495E00AAC540 /* RoversViewModel.swift */; };
 		10CA2F50265549A500AAC540 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10CA2F4F265549A500AAC540 /* SDWebImageSwiftUI */; };
 		10CA2F52265549B800AAC540 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F51265549B800AAC540 /* NetworkProtocol.swift */; };
 		10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */; };
@@ -60,7 +59,6 @@
 
 /* Begin PBXFileReference section */
 		108F43112657F1BE0089A636 /* ARRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRoverView.swift; sourceTree = "<group>"; };
-		108F43132657FA7B0089A636 /* PhotoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridView.swift; sourceTree = "<group>"; };
 		10CA2F022655010C00AAC540 /* NasaMarsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaMarsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaMarsAPIApp.swift; sourceTree = "<group>"; };
 		10CA2F072655010C00AAC540 /* TabScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreenView.swift; sourceTree = "<group>"; };
@@ -79,7 +77,7 @@
 		10CA2F422655103300AAC540 /* RoverPhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosModel.swift; sourceTree = "<group>"; };
 		10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPINetworkTest.swift; sourceTree = "<group>"; };
 		10CA2F4A2655491200AAC540 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPIViewModel.swift; sourceTree = "<group>"; };
+		10CA2F4C2655495E00AAC540 /* RoversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoversViewModel.swift; sourceTree = "<group>"; };
 		10CA2F51265549B800AAC540 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHelpers.swift; sourceTree = "<group>"; };
 		10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rover+HelperEnums.swift"; sourceTree = "<group>"; };
@@ -207,7 +205,7 @@
 		10CA2F32265501F900AAC540 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */,
+				10CA2F4C2655495E00AAC540 /* RoversViewModel.swift */,
 				10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */,
 			);
 			path = ViewModel;
@@ -251,7 +249,6 @@
 				10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */,
 				10FB386F265697AA004A51B1 /* CameraFilterView.swift */,
 				B05959622656E14B00A4578E /* CustomToolBarItems.swift */,
-				108F43132657FA7B0089A636 /* PhotoGridView.swift */,
 			);
 			path = HelperUI;
 			sourceTree = "<group>";
@@ -417,12 +414,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CA2F5826555AD000AAC540 /* CalendarView.swift in Sources */,
-				108F43142657FA7B0089A636 /* PhotoGridView.swift in Sources */,
 				B05959632656E14B00A4578E /* CustomToolBarItems.swift in Sources */,
 				10FB3870265697AA004A51B1 /* CameraFilterView.swift in Sources */,
 				B04BA6F02655B30D0034297C /* PhotosCellView.swift in Sources */,
 				10CA2F082655010C00AAC540 /* TabScreenView.swift in Sources */,
-				10CA2F4D2655495E00AAC540 /* NasaAPIViewModel.swift in Sources */,
+				10CA2F4D2655495E00AAC540 /* RoversViewModel.swift in Sources */,
 				10CA2F56265552A700AAC540 /* Rover+HelperEnums.swift in Sources */,
 				10CA2F5A265561BB00AAC540 /* RoverDetailCard.swift in Sources */,
 				10CA2F5426554A2F00AAC540 /* ServiceHelpers.swift in Sources */,

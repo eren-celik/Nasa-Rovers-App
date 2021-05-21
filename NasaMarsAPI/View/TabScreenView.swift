@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TabScreenView: View {
-    @EnvironmentObject private var apiService : NasaAPIViewModel
-    @State private var selectedTab            : ViewsNames = ViewsNames.curiosity
+    @EnvironmentObject private var service : RoversViewModel
+    @State private var selectedTab            : RoverNames = RoverNames.curiosity
     
     @State private var showSelectCameraFilter : Bool = false
     @State private var showDetailCard         : Bool = false
@@ -25,97 +25,107 @@ struct TabScreenView: View {
                 CuriosityRoverView(showSelectCamera: $showSelectCameraFilter,
                                    showDetailCard: $showDetailCard,
                                    showCalendar: $showCalendar)
-                    .environmentObject(apiService)
+                    .environmentObject(service)
                     .tabItem {
                         Label(RoverNames.curiosity.rawValue,
                               systemImage: RoverNames.curiosity.iconName)
                     }
-                    .tag(ViewsNames.curiosity)
+                    .tag(RoverNames.curiosity)
                 
                 OpportunityRoverView(showSelectCamera: $showSelectCameraFilter,
                                      showDetailCard: $showDetailCard,
                                      showCalendar: $showCalendar)
-                    .environmentObject(apiService)
+                    .environmentObject(service)
                     .tabItem {
                         Label(RoverNames.opportunity.rawValue,
                               systemImage: RoverNames.opportunity.iconName)
                     }
-                    .tag(ViewsNames.opportunity)
+                    .tag(RoverNames.opportunity)
                 
                 SpiritRoverView(showSelectCamera: $showSelectCameraFilter,
                                 showDetailCard: $showDetailCard, showCalendar: $showCalendar)
-                    .environmentObject(apiService)
+                    .environmentObject(service)
                     .tabItem {
                         Label(RoverNames.spirit.rawValue,
                               systemImage: RoverNames.spirit.iconName)
                     }
-                    .tag(ViewsNames.spirit)
+                    .tag(RoverNames.spirit)
             }
             .sheet(isPresented: $showCalendar,
                    onDismiss: calendarDissmisFunctions,
                    content: {
                     CalendarView(selectedDate: $selectedDate)
+                        .environmentObject(service)
                    }
             )
             .onChange(of: selectedTab, perform: { value in
-                apiService.selectedPage = value
+                service.currentView = value
             })
-            
-            if showSelectCameraFilter {
-                VisualEffectBlur(blurStyle: .dark)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        withAnimation(.easeInOut){
-                            showSelectCameraFilter.toggle()
+            ZStack{
+                if showSelectCameraFilter {
+                    VisualEffectBlur(blurStyle: .dark)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation(.easeInOut){
+                                showSelectCameraFilter.toggle()
+                            }
                         }
-                    }
-                CameraFilterView(currentViewName: $selectedTab,
-                                 closeCard: $showSelectCameraFilter)
-                    .environmentObject(apiService)
-                    .animation(.easeInOut)
-                    .onDisappear {
-                        apiService.pageCount = 1
-                        switch selectedTab {
-                        case .curiosity:
-                            apiService.getCuriosityRoverData()
-                        case .opportunity:
-                            apiService.getOpportunityRoverData()
-                        case .spirit:
-                            apiService.getSpiritRoverData()
+                    CameraFilterView(currentViewName: $selectedTab,
+                                     closeCard: $showSelectCameraFilter)
+                        .environmentObject(service)
+                        .animation(.easeInOut)
+                        .onDisappear {
+                            cameraFilterViewDismissFunctions()
                         }
-                    }
-            }
-            
-            if showDetailCard {
-                VisualEffectBlur(blurStyle: .dark)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        withAnimation(.easeInOut){
-                            showDetailCard.toggle()
-                        }
-                    }
+                }
                 
-                RoverDetailCard(closeCard: $showDetailCard)
-                    .environmentObject(apiService)
+                if showDetailCard {
+                    VisualEffectBlur(blurStyle: .dark)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation(.easeInOut){
+                                showDetailCard.toggle()
+                            }
+                        }
+                    
+                    RoverDetailCard(closeCard: $showDetailCard)
+                        .environmentObject(service)
+                }
             }
+            .transition(.scale)
         }
-        .animation(.easeInOut)
     }
     
     func calendarDissmisFunctions() {
-        switch selectedTab {
-        case .curiosity:
-            apiService.getCuriosityRoverData(selectedEarthDate: apiService.dateFormatter.string(from: selectedDate))
-        case .opportunity:
-            apiService.getOpportunityRoverData(selectedEarthDate: apiService.dateFormatter.string(from: selectedDate))
-        case .spirit:
-            apiService.getSpiritRoverData(selectedEarthDate: apiService.dateFormatter.string(from: selectedDate))
+        if service.roverPhotoDate != nil{
+            switch selectedTab {
+            case .curiosity:
+                service.getCuriosityRoverData(selectedEarthDate: service.dateFormatter.string(from: selectedDate))
+            case .opportunity:
+                service.getOpportunityRoverData(selectedEarthDate: service.dateFormatter.string(from: selectedDate))
+            case .spirit:
+                service.getSpiritRoverData(selectedEarthDate: service.dateFormatter.string(from: selectedDate))
+            }
+        }
+    }
+    
+    func cameraFilterViewDismissFunctions(){
+        service.pageCount = 1
+        if service.cameraPosition != .all {
+            switch selectedTab {
+            case .curiosity:
+                service.getCuriosityRoverData()
+            case .opportunity:
+                service.getOpportunityRoverData()
+            case .spirit:
+                service.getSpiritRoverData()
+            }
         }
     }
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TabScreenView_Previews: PreviewProvider {
     static var previews: some View {
         TabScreenView()
     }

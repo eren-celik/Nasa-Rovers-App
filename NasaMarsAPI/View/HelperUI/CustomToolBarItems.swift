@@ -11,6 +11,7 @@ struct CustomToolbarItems : ToolbarContent {
     @Binding var showCalendar: Bool
     @Binding var showCameraFilterView: Bool
     var arKitFileName : String
+    
     var body: some ToolbarContent{
         ToolbarItemGroup(placement: .navigationBarTrailing) {
             Button(action: {
@@ -20,7 +21,9 @@ struct CustomToolbarItems : ToolbarContent {
                     .imageScale(.large)
             })
             Button(action: {
-                showCameraFilterView.toggle()
+                withAnimation {
+                    showCameraFilterView.toggle()
+                }
             }, label: {
                 Image(systemName: "line.horizontal.3.decrease")
                     .imageScale(.large)

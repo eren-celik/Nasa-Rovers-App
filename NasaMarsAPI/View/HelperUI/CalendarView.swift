@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
     @Binding var selectedDate: Date
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject private var helperService = NasaAPIViewModel()
+    @EnvironmentObject private var service : RoversViewModel
+
     var body: some View {
         NavigationView{
             Form{
@@ -33,6 +33,7 @@ struct CalendarView: View {
     var buttonRow : some View {
         HStack {
             Button(action: {
+                service.roverPhotoDate = nil
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Back")
@@ -54,7 +55,7 @@ struct CalendarView: View {
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
-                helperService.photoRoverDate = helperService.dateFormatter.string(from: selectedDate)
+                service.roverPhotoDate = service.dateFormatter.string(from: selectedDate)
             }, label: {
                 Text("Select")
                     .font(.system(.title3, design: .rounded))

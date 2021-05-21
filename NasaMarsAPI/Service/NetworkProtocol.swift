@@ -10,16 +10,14 @@ import Combine
 
 protocol NetworkProtocol: AnyObject {
     func getDataFromServer<T>(url : URL,
-                              dataDecodingType: T.Type,
-                              receiveQueue: DispatchQueue) -> AnyPublisher<T, Error> where T: Decodable
+                              dataDecodingType: T.Type) -> AnyPublisher<T, Error> where T: Decodable
     
 }
 
 final class NetworkController: NetworkProtocol {
     
     func getDataFromServer<T>(url: URL,
-                              dataDecodingType: T.Type,
-                              receiveQueue: DispatchQueue) -> AnyPublisher<T, Error> where T : Decodable {
+                              dataDecodingType: T.Type) -> AnyPublisher<T, Error> where T : Decodable {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethods.get.rawValue
@@ -33,7 +31,7 @@ final class NetworkController: NetworkProtocol {
                 return data
             }
             .decode(type: T.self, decoder: JSONDecoder())
-            .receive(on: receiveQueue)
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }

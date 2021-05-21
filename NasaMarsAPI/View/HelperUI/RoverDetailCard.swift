@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct RoverDetailCard: View {
     @Binding var closeCard: Bool
-    @EnvironmentObject private var service : NasaAPIViewModel
+    @EnvironmentObject private var service : RoversViewModel
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -59,11 +59,14 @@ struct RoverDetailCard: View {
             }else{
                 Text("Error An Occured Try Another Image")
                     .font(.system(.title3, design: .rounded))
-                    .padding(20)
+                    .foregroundColor(.red)
+                    .padding(30)
             }
             
             Button(action: {
-                self.closeCard.toggle()
+                withAnimation(.easeInOut){
+                    self.closeCard.toggle()
+                }
             }, label: {
                 ZStack {
                     Circle()
@@ -83,13 +86,13 @@ struct RoverDetailCard: View {
                 x: 1,
                 y: 1
         )
-        
+        .animation(.easeInOut)
     }
 }
 
 struct RoverDetailCard_Previews: PreviewProvider {
     static var previews: some View {
         RoverDetailCard(closeCard: .constant(false))
-            .environmentObject(NasaAPIViewModel())
+            .environmentObject(RoversViewModel())
     }
 }

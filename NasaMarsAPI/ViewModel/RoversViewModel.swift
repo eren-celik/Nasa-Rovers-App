@@ -7,42 +7,37 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
-enum DataStatus{
-    case full
-    case empty
-    case error
-    case loading
-}
 
-final class NasaAPIViewModel : ObservableObject{
+final class RoversViewModel : ObservableObject{
+    private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
+    private var cancellable = Set<AnyCancellable>()
+    
     @Published var curiostyDataArray    : [Photo] = PhotoArray()
     @Published var opportunityDataArray : [Photo] = PhotoArray()
     @Published var spiritDataArray      : [Photo] = PhotoArray()
     
     @Published var dataStatus : DataStatus = .full
-    @Published var cameraPositions : CameraName = CameraName.all
+    @Published var cameraPosition : CameraName = CameraName.all
     @Published var photoDetailData : Photo?
-    @Published var selectedPage : ViewsNames?{
-        didSet{
-            pageCount = 1
-        }
-    }
-    @Published var photoRoverDate : String?
+    
+    @Published var roverPhotoDate : String?
     @Published var pageCount: Int = 1
     
+    @Published var currentView : RoverNames?{
+        didSet{
+            pageCount = 1
+            cameraPosition = .all
+        }
+    }
     
-    private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
-    
-    private var cancellable = Set<AnyCancellable>()
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
 }
-extension NasaAPIViewModel{
+extension RoversViewModel{
     private func onRecive( _ completion: Subscribers.Completion<Error>) {
         switch completion {
         case .finished:
@@ -56,21 +51,23 @@ extension NasaAPIViewModel{
     }
 }
 
-extension NasaAPIViewModel {
+extension RoversViewModel {
     
     func getCuriosityRoverData(selectedEarthDate: String? = nil) {
         dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .curiosity,
                                     endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.curiosity.rawValue,
                                                                          page: pageCount,
-                                                                         camera: cameraPositions))
+                                                                         camera: cameraPosition))
             .sink (receiveCompletion: onRecive(_:),
                    receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
                         self?.dataStatus = .empty
                     }else{
-                        self?.curiostyDataArray = value.photos
-                        self?.dataStatus = .full
+                        DispatchQueue.main.async {
+                            self?.curiostyDataArray = value.photos
+                            self?.dataStatus = .full
+                        }
                     }
                    }
             )
@@ -82,14 +79,16 @@ extension NasaAPIViewModel {
         serviceLayer.getRoverPhotos(roverType: .opportunity,
                                     endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.opportunity.rawValue,
                                                                          page: pageCount,
-                                                                         camera: cameraPositions))
+                                                                         camera: cameraPosition))
             .sink(receiveCompletion: onRecive(_:),
                   receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
                         self?.dataStatus = .empty
                     }else{
-                        self?.opportunityDataArray = value.photos
-                        self?.dataStatus = .full
+                        DispatchQueue.main.async {
+                            self?.curiostyDataArray = value.photos
+                            self?.dataStatus = .full
+                        }
                     }
                   }
             )
@@ -101,34 +100,36 @@ extension NasaAPIViewModel {
         serviceLayer.getRoverPhotos(roverType: .spirit,
                                     endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.spirit.rawValue,
                                                                          page: pageCount,
-                                                                         camera: cameraPositions))
+                                                                         camera: cameraPosition))
             .sink(receiveCompletion: onRecive(_:),
                   receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
                         self?.dataStatus = .empty
                     }else{
-                        self?.spiritDataArray = value.photos
-                        self?.dataStatus = .full
+                        DispatchQueue.main.async {
+                            self?.curiostyDataArray = value.photos
+                            self?.dataStatus = .full
+                        }
                     }
                   }
             )
             .store(in: &cancellable)
     }
 }
-extension NasaAPIViewModel{
+extension RoversViewModel{
     func loadMorePhoto(isLast: Bool, roverType : RoverNames, defaultDate: RoverPhotosDefaultDate) {
         if isLast {
             serviceLayer.getRoverPhotos(roverType: roverType,
-                                        endPointType: .shared.getByEarthDate(earthDate: self.photoRoverDate ?? defaultDate.rawValue,
+                                        endPointType: .shared.getByEarthDate(earthDate: self.roverPhotoDate ?? defaultDate.rawValue,
                                                                              page: pageCount,
-                                                                             camera: cameraPositions))
+                                                                             camera: cameraPosition))
                 .handleEvents(receiveOutput: { response in
                     self.pageCount += 1
                 })
                 .sink(receiveCompletion: onRecive(_:),
                       receiveValue: { [weak self] value in
                         if !value.photos.isEmpty{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 switch roverType{
                                 case .curiosity:
                                     self?.curiostyDataArray += value.photos

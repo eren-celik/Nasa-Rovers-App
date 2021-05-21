@@ -10,8 +10,8 @@ import SDWebImageSwiftUI
 
 struct PhotosCellView: View {
     @Binding var onTapPhoto: Bool
-    @EnvironmentObject private var service : NasaAPIViewModel
-    
+    @EnvironmentObject private var service : RoversViewModel
+
     private var photoData : Photo
     
     init(onTapPhoto: Binding<Bool>, photoModel: Photo) {
@@ -27,7 +27,9 @@ struct PhotosCellView: View {
             .frame(width: 170, height: 170)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .onTapGesture {
-                self.onTapPhoto.toggle()
+                withAnimation {
+                    self.onTapPhoto.toggle()
+                }
                 service.photoDetailData = photoData
             }
     }

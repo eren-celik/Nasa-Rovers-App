@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct NasaMarsAPIApp: App {
-    @ObservedObject var apiService = NasaAPIViewModel()
+    @ObservedObject var apiService = RoversViewModel()
     var body: some Scene {
         WindowGroup {
             TabScreenView()

@@ -53,14 +53,17 @@ extension RoverNames{
     }
 }
 
-enum ViewsNames {
-    case curiosity
-    case opportunity
-    case spirit
-}
 
 enum RoverPhotosDefaultDate: String{
     case curiosity = "2021-5-1"
     case opportunity = "2017-06-07"
     case spirit = "2009-12-23"
 }
+
+enum DataStatus {
+    case full
+    case empty
+    case error
+    case loading
+}
+

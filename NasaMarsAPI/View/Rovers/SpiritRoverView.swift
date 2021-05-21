@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct SpiritRoverView: View {
-    @EnvironmentObject private var service : NasaAPIViewModel
+    @EnvironmentObject private var service : RoversViewModel
     
     @Binding var showSelectCamera: Bool
     @Binding var showDetailCard  : Bool
     @Binding var showCalendar    : Bool
     
-    private let gridItemLayout = [
-        GridItem(.adaptive(minimum: 150, maximum: 170),spacing: 20)
-    ]
     
     var body: some View {
         NavigationView {
@@ -44,7 +41,7 @@ struct SpiritRoverView: View {
     }
     private var mainView : some View{
         ScrollView {
-            LazyVGrid(columns: gridItemLayout , spacing : 20) {
+            LazyVGrid(columns: ViewsHelper.gridItemLayout , spacing : 20) {
                 ForEach(service.spiritDataArray.indices,id: \.self) { value in
                     PhotosCellView(onTapPhoto: $showDetailCard,
                                    photoModel: service.spiritDataArray[value])

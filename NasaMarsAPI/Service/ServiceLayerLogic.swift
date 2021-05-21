@@ -29,8 +29,7 @@ final class UsersLogicController: ServiceLayerLogicProtocol {
                         endPointType: Endpoint) -> AnyPublisher<RoverPhotosModel, Error> {
         
         return networkProtocol.getDataFromServer(url: endPointType.url(roverType: roverType),
-                                                 dataDecodingType: RoverPhotosModel.self,
-                                                 receiveQueue: .main)
+                                                 dataDecodingType: RoverPhotosModel.self)
     }
     
 }
