@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 enum DataStatus{
     case full
@@ -20,26 +21,22 @@ final class NasaAPIViewModel : ObservableObject{
     @Published var opportunityDataArray : [Photo] = PhotoArray()
     @Published var spiritDataArray      : [Photo] = PhotoArray()
     
-    @Published var photoDetailData : Photo?
-    
-    @Published var selectedEarthDate : String = ""
-    @Published var selectedMarsDate : Int?
-    @Published var selectedPage : ViewsNames?
-    
     @Published var dataStatus : DataStatus = .full
+    @Published var cameraPositions : CameraName = CameraName.all
+    @Published var photoDetailData : Photo?
+    @Published var selectedPage : ViewsNames = ViewsNames.curiosity
+
+    @Published var pageCount: Int = 1
+    
     
     private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
+    
     private var cancellable = Set<AnyCancellable>()
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
-    
-    init() {
-        selectedEarthDate = dateFormatter.string(from: Date().threeDayBefore)
-    }
-    
 }
 extension NasaAPIViewModel{
     private func onRecive( _ completion: Subscribers.Completion<Error>) {
@@ -57,10 +54,12 @@ extension NasaAPIViewModel{
 
 extension NasaAPIViewModel {
     
-    func getCuriosityRoverData(endPointType: Endpoint) {
+    func getCuriosityRoverData(selectedEarthDate: String? = nil) {
         dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .curiosity,
-                                    endPointType: endPointType)
+                                    endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.curiosity.rawValue,
+                                                                         page: pageCount,
+                                                                         camera: cameraPositions))
             .sink (receiveCompletion: onRecive(_:),
                    receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
@@ -74,11 +73,12 @@ extension NasaAPIViewModel {
             .store(in: &cancellable)
     }
     
-    
-    func getOpportunityRoverData(endPointType: Endpoint){
+    func getOpportunityRoverData(selectedEarthDate: String? = nil){
         dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .opportunity,
-                                    endPointType: endPointType)
+                                    endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.opportunity.rawValue,
+                                                                         page: pageCount,
+                                                                         camera: cameraPositions))
             .sink(receiveCompletion: onRecive(_:),
                   receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
@@ -92,20 +92,43 @@ extension NasaAPIViewModel {
             .store(in: &cancellable)
     }
     
-    func getSpiritRoverData(endPointType: Endpoint) {
-        dataStatus = .loading
+    func getSpiritRoverData(selectedEarthDate: String? = nil) {
+        self.dataStatus = .loading
         serviceLayer.getRoverPhotos(roverType: .spirit,
-                                    endPointType: endPointType)
-            .sink (receiveCompletion: onRecive(_:),
-                   receiveValue: { [weak self] value in
+                                    endPointType: .shared.getByEarthDate(earthDate: selectedEarthDate ?? RoverPhotosDefaultDate.spirit.rawValue,
+                                                                         page: pageCount,
+                                                                         camera: cameraPositions))
+            .sink(receiveCompletion: onRecive(_:),
+                  receiveValue: { [weak self] value in
                     if value.photos.isEmpty{
                         self?.dataStatus = .empty
                     }else{
                         self?.spiritDataArray = value.photos
                         self?.dataStatus = .full
                     }
-                   }
+                  }
             )
             .store(in: &cancellable)
+    }
+}
+extension NasaAPIViewModel{
+    func loadMorePhoto(currentValue : Photo) {
+        if spiritDataArray.last?.id == currentValue.id{
+            pageCount += 1
+            serviceLayer.getRoverPhotos(roverType: .spirit,
+                                        endPointType: .shared.getByEarthDate(earthDate: "2017-5-2" ,
+                                                                             page: pageCount,
+                                                                             camera: cameraPositions))
+                .sink(receiveCompletion: onRecive(_:),
+                      receiveValue: { [weak self] value in
+                        if !value.photos.isEmpty{
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self?.spiritDataArray += value.photos
+                            }
+                        }
+                      }
+                )
+                .store(in: &cancellable)
+        }
     }
 }

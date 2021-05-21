@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CameraFilterView: View {
-    @Binding var cameraPositions : CameraName
+    @EnvironmentObject var service : NasaAPIViewModel
+    
     @Binding var currentViewName : ViewsNames
     @Binding var closeCard       : Bool
     
@@ -20,7 +21,7 @@ struct CameraFilterView: View {
                 .font(.system(.title3,
                               design: .rounded))
                 .padding([.leading,.top], 10)
-            DisclosureGroup(cameraPositions.rawValue, isExpanded: $showDropDownMenu) {
+            DisclosureGroup(service.cameraPositions.rawValue, isExpanded: $showDropDownMenu) {
                 VStack(alignment: .leading){
                     ForEach(selectedTab(), id: \.self) { value in
                         HStack {
@@ -32,7 +33,7 @@ struct CameraFilterView: View {
                             Spacer()
                         }
                         .onTapGesture {
-                            cameraPositions = value
+                            service.cameraPositions = value
                             withAnimation {
                                 showDropDownMenu.toggle()
                             }
@@ -85,8 +86,7 @@ struct CameraFilterView: View {
 
 struct CameraFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraFilterView(cameraPositions: .constant(CameraName.CHEMCAM),
-                         currentViewName: .constant(.curiosity),
+        CameraFilterView(currentViewName: .constant(.curiosity),
                          closeCard: .constant(false))
     }
 }

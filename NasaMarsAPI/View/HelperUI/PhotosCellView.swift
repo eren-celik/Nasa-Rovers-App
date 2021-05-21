@@ -10,15 +10,13 @@ import SDWebImageSwiftUI
 
 struct PhotosCellView: View {
     @Binding var onTapPhoto: Bool
-    var lastObject: Bool
     @EnvironmentObject private var service : NasaAPIViewModel
     
     private var photoData : Photo
     
-    init(onTapPhoto: Binding<Bool>, photoModel: Photo, lastObject: Bool) {
+    init(onTapPhoto: Binding<Bool>, photoModel: Photo) {
         self._onTapPhoto = onTapPhoto
         self.photoData = photoModel
-        self.lastObject = lastObject
     }
     
     var body: some View {
@@ -32,12 +30,6 @@ struct PhotosCellView: View {
                 self.onTapPhoto.toggle()
                 service.photoDetailData = photoData
             }
-            .onAppear(){
-                if lastObject{
-                    //service.getOpportunityRoverData(endPointType: T##Endpoint)
-                }
-            }
-            
     }
 }
 
@@ -47,7 +39,6 @@ struct PhotosCellView_Previews: PreviewProvider {
                        photoModel: Photo(sol: 2, camera: Camera(id: 2, name: "", roverID: 2, fullName: ""),
                                          imgSrc: "https://mars.nasa.gov/msl-raw-images/msss/03105/mcam/3105MR0162310161401727C00_DXXX.jpg",
                                          earthDate: "",
-                                         rover: Rover(id: 2, name: "", landingDate: "", launchDate: "", status: "")),
-                       lastObject: false)
+                                         rover: Rover(id: 2, name: "", landingDate: "", launchDate: "", status: "")))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		108F43122657F1BE0089A636 /* ARRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F43112657F1BE0089A636 /* ARRoverView.swift */; };
 		10CA2F062655010C00AAC540 /* NasaMarsAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */; };
 		10CA2F082655010C00AAC540 /* TabScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F072655010C00AAC540 /* TabScreenView.swift */; };
 		10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F092655011200AAC540 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		108F43112657F1BE0089A636 /* ARRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRoverView.swift; sourceTree = "<group>"; };
 		10CA2F022655010C00AAC540 /* NasaMarsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaMarsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaMarsAPIApp.swift; sourceTree = "<group>"; };
 		10CA2F072655010C00AAC540 /* TabScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreenView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				10CA2F072655010C00AAC540 /* TabScreenView.swift */,
 				10FB386C26566956004A51B1 /* HelperUI */,
 				B04BA6E82655A93B0034297C /* Rovers */,
+				108F43112657F1BE0089A636 /* ARRoverView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				B04BA6EA2655A9750034297C /* CuriosityRoverView.swift in Sources */,
 				10CA2F52265549B800AAC540 /* NetworkProtocol.swift in Sources */,
 				10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */,
+				108F43122657F1BE0089A636 /* ARRoverView.swift in Sources */,
 				10CA2F3D2655056800AAC540 /* ServiceLayerLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

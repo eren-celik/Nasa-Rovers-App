@@ -57,24 +57,3 @@ extension Endpoint {
         ])
     }
 }
-enum EndPointType{
-    
-    func getByEarthDate(earthDate: String, page: Int, camera: CameraName) -> Endpoint {
-        return Endpoint(queryItems: [
-            URLQueryItem(name: "earth_date", value: earthDate),
-            URLQueryItem(name: "api_key", value: "50reqbOzD2VPIr6r6ofb77netEOwPPCA3Ne730qH"),
-            URLQueryItem(name: "page", value: "\(page)"),
-            camera != .all ? URLQueryItem(name: "camera", value: "\(camera)") : URLQueryItem(name: "", value: "")
-        ])
-    }
-    
-    func getBySolDay(solDay : Int, page: Int, camera: CameraName) -> Endpoint {
-        return Endpoint(queryItems: [
-            URLQueryItem(name: "sol", value: "\(solDay)"),
-            URLQueryItem(name: "api_key", value: "50reqbOzD2VPIr6r6ofb77netEOwPPCA3Ne730qH"),
-            URLQueryItem(name: "page", value: "\(page)"),
-            camera != .all ? URLQueryItem(name: "camera", value: "\(camera)") : URLQueryItem(name: "", value: "")
-        ])
-    }
-}
-//Todo: Convert The Router Enum Endpoints

@@ -44,16 +44,13 @@ struct OpportunityRoverView: View {
     private var mainView: some View {
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                ForEach(service.opportunityDataArray.indices) { index in
-                    if index == service.opportunityDataArray.count - 2{
-                        PhotosCellView(onTapPhoto: $showDetailCard,
-                                       photoModel: service.opportunityDataArray[index],
-                                       lastObject: true)
-                            .environmentObject(service)
-                    }else{
-                        PhotosCellView(onTapPhoto: $showDetailCard, photoModel: service.opportunityDataArray[index], lastObject: false)
-                            .environmentObject(service)
-                    }
+                ForEach(service.opportunityDataArray) { value in
+                    PhotosCellView(onTapPhoto: $showDetailCard,
+                                   photoModel: value)
+                        .environmentObject(service)
+                        .onAppear(){
+                            service.loadMorePhoto(currentValue: value)
+                        }
                 }
             }
         }
