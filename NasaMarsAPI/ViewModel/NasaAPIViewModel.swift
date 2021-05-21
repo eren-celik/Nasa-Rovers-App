@@ -24,8 +24,12 @@ final class NasaAPIViewModel : ObservableObject{
     @Published var dataStatus : DataStatus = .full
     @Published var cameraPositions : CameraName = CameraName.all
     @Published var photoDetailData : Photo?
-    @Published var selectedPage : ViewsNames = ViewsNames.curiosity
-
+    @Published var selectedPage : ViewsNames?{
+        didSet{
+            pageCount = 1
+        }
+    }
+    @Published var photoRoverDate : String?
     @Published var pageCount: Int = 1
     
     
@@ -112,23 +116,36 @@ extension NasaAPIViewModel {
     }
 }
 extension NasaAPIViewModel{
-    func loadMorePhoto(currentValue : Photo) {
-        if spiritDataArray.last?.id == currentValue.id{
-            pageCount += 1
-            serviceLayer.getRoverPhotos(roverType: .spirit,
-                                        endPointType: .shared.getByEarthDate(earthDate: "2017-5-2" ,
+    func loadMorePhoto(isLast: Bool, roverType : RoverNames, defaultDate: RoverPhotosDefaultDate) {
+        if isLast {
+            serviceLayer.getRoverPhotos(roverType: roverType,
+                                        endPointType: .shared.getByEarthDate(earthDate: self.photoRoverDate ?? defaultDate.rawValue,
                                                                              page: pageCount,
                                                                              camera: cameraPositions))
+                .handleEvents(receiveOutput: { response in
+                    self.pageCount += 1
+                })
                 .sink(receiveCompletion: onRecive(_:),
                       receiveValue: { [weak self] value in
                         if !value.photos.isEmpty{
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self?.spiritDataArray += value.photos
+                                switch roverType{
+                                case .curiosity:
+                                    self?.curiostyDataArray += value.photos
+                                    break
+                                case .opportunity:
+                                    self?.opportunityDataArray += value.photos
+                                    break
+                                case .spirit:
+                                    self?.spiritDataArray += value.photos
+                                    break
+                                }
                             }
                         }
                       }
                 )
                 .store(in: &cancellable)
+            
         }
     }
 }

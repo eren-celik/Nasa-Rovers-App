@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomToolbarItems : ToolbarContent {
     @Binding var showCalendar: Bool
     @Binding var showCameraFilterView: Bool
-    
     var body: some ToolbarContent{
         ToolbarItemGroup(placement: .navigationBarTrailing) {
             Button(action: {
@@ -26,5 +25,12 @@ struct CustomToolbarItems : ToolbarContent {
                     .imageScale(.large)
             })
         }
+//        ToolbarItem(placement: .navigationBarLeading){
+//            NavigationLink(
+//                destination: ARRoverView(modeName: true),
+//                label: {
+//                    Image(systemName: "arkit")
+//                })
+//        }
     }
 }

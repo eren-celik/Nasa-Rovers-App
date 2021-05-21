@@ -34,6 +34,7 @@ struct CuriosityRoverView: View {
                     }
                 }
             }
+
             .navigationTitle(RoverNames.curiosity.rawValue)
             .toolbar {
                 CustomToolbarItems(showCalendar: $showCalendar,
@@ -45,14 +46,17 @@ struct CuriosityRoverView: View {
     private var mainView: some View{
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                ForEach(service.curiostyDataArray) { value in
+                ForEach(service.curiostyDataArray.indices,id: \.self) { value in
                     PhotosCellView(onTapPhoto: $showDetailCard,
-                                   photoModel: value)
+                                   photoModel: service.curiostyDataArray[value])
                         .environmentObject(service)
                         .onAppear(){
-                            service.loadMorePhoto(currentValue: value)
+                            if service.curiostyDataArray[value].id == service.curiostyDataArray.last?.id{
+                                service.loadMorePhoto(isLast: true, roverType: .curiosity, defaultDate: .curiosity)
+                            }
                         }
                 }
+                
             }
         }
         

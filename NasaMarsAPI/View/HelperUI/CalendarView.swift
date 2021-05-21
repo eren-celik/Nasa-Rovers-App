@@ -54,6 +54,7 @@ struct CalendarView: View {
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
+                helperService.photoRoverDate = helperService.dateFormatter.string(from: selectedDate)
             }, label: {
                 Text("Select")
                     .font(.system(.title3, design: .rounded))

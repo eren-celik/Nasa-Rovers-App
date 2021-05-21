@@ -44,12 +44,14 @@ struct SpiritRoverView: View {
     private var mainView : some View{
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                ForEach(service.spiritDataArray) { value in
+                ForEach(service.spiritDataArray.indices,id: \.self) { value in
                     PhotosCellView(onTapPhoto: $showDetailCard,
-                                   photoModel: value)
+                                   photoModel: service.spiritDataArray[value])
                         .environmentObject(service)
                         .onAppear(){
-                            service.loadMorePhoto(currentValue: value)
+                            if service.spiritDataArray[value].id == service.spiritDataArray.last?.id{
+                                service.loadMorePhoto(isLast: true, roverType: .spirit, defaultDate: .spirit)
+                            }
                         }
                 }
             }

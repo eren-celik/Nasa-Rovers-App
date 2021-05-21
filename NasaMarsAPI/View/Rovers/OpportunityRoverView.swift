@@ -33,6 +33,7 @@ struct OpportunityRoverView: View {
                     }
                 }
             }
+
             .navigationTitle(RoverNames.opportunity.rawValue)
             .toolbar {
                 CustomToolbarItems(showCalendar: $showCalendar,
@@ -44,12 +45,14 @@ struct OpportunityRoverView: View {
     private var mainView: some View {
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                ForEach(service.opportunityDataArray) { value in
+                ForEach(service.opportunityDataArray.indices,id: \.self) { value in
                     PhotosCellView(onTapPhoto: $showDetailCard,
-                                   photoModel: value)
+                                   photoModel: service.opportunityDataArray[value])
                         .environmentObject(service)
                         .onAppear(){
-                            service.loadMorePhoto(currentValue: value)
+                            if service.opportunityDataArray[value].id == service.opportunityDataArray.last?.id{
+                                service.loadMorePhoto(isLast: true, roverType: .opportunity, defaultDate: .opportunity)
+                            }
                         }
                 }
             }
