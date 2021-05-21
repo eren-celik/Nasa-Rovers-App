@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// All Camera Types
 enum CameraName: String, CaseIterable {
     case FHAZ       = "Front Hazard Avoidance Camera"
     case RHAZ       = "Rear Hazard Avoidance Camera"
@@ -20,13 +20,15 @@ enum CameraName: String, CaseIterable {
     case all        = "All camera positions"
 }
 extension CameraName{
-    /// Gives an rovers Avalible Camera
+    /// Gives an Curiosity Rover Avalible Camera
     static var curiosityAvalibleCamera : [CameraName] {
         return [.FHAZ, .RHAZ, .MAST ,.CHEMCAM, .MAHLI, .MARDI, .NAVCAM ]
     }
+    /// Gives an Oppurtunity Rover Avalible Camera
     static var oppurtunityAvabileCamera : [CameraName] {
         return [.FHAZ, .RHAZ, .NAVCAM, .PANCAM, .MINITES ]
     }
+    /// Gives an Spirit Rover Avalible Camera
     static var spiritAvalibleCamera : [CameraName] {
         return [.FHAZ, .RHAZ, .NAVCAM, .PANCAM, .MINITES ]
     }
@@ -39,6 +41,7 @@ enum RoverNames: String , CaseIterable {
 }
 
 extension RoverNames{
+    ///TabView Icons Name
     var iconName : String {
         get{
             switch self {
@@ -51,14 +54,21 @@ extension RoverNames{
             }
         }
     }
+    ///Defaults Rover Photo Date
+    var roverPhotoDefaultDates: String {
+        get{
+            switch self{
+            case .curiosity:
+                return "2021-5-1"
+            case .opportunity:
+                return "2017-06-07"
+            case .spirit:
+                return "2009-12-23"
+            }
+        }
+    }
 }
 
-
-enum RoverPhotosDefaultDate: String{
-    case curiosity = "2021-5-1"
-    case opportunity = "2017-06-07"
-    case spirit = "2009-12-23"
-}
 
 enum DataStatus {
     case full

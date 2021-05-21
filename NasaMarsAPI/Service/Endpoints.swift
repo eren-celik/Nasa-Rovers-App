@@ -7,13 +7,16 @@
 
 import Foundation
 
+/// URL Body
 struct Endpoint {
     var queryItems: [URLQueryItem] = []
     static let shared = Endpoint()
 }
 
-//URL Body
 extension Endpoint {
+    /// Receives generic type data  from Nasa Server using Combine
+    /// - Parameter roverType: Nasa Rovers.
+    /// - Returns: Returns  Full base URL (api.nasa.gov/mars-photos/api/v1/rovers)
     func url(roverType: RoverNames) -> URL{
         var components = URLComponents()
         components.scheme = "https"
@@ -34,7 +37,7 @@ extension Endpoint {
     /// - Parameter earthDate: Standart Earth Date.
     /// - Parameter page: Values Count. Per page gives a 25 value.
     /// - Parameter camera: Rover Camera Position. Default value gives all.
-    /// - Returns: Returns Url.
+    /// - Returns: Returns Earth date type  URL.
     func getByEarthDate(earthDate: String, page: Int, camera: CameraName) -> Self {
         return Endpoint(queryItems: [
             URLQueryItem(name: "earth_date", value: earthDate),
@@ -47,7 +50,7 @@ extension Endpoint {
     /// - Parameter solDay: Mars Day.
     /// - Parameter page: Values Count. Per page gives a 25 value
     /// - Parameter camera: Rover Camera Position. Default value gives all
-    /// - Returns: Returns Url.
+    /// - Returns: Returns Mars date type Url.
     func getBySolDay(solDay : Int, page: Int, camera: CameraName) -> Self {
         return Endpoint(queryItems: [
             URLQueryItem(name: "sol", value: "\(solDay)"),

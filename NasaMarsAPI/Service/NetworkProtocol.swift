@@ -9,6 +9,10 @@ import Foundation
 import Combine
 
 protocol NetworkProtocol: AnyObject {
+    /// Receives generic type data  from Nasa Server using Combine
+    /// - Parameter url: Base Nasa Url.
+    /// - Parameter dataDecodingType: Generic decoding data type
+    /// - Returns: Returns  AnyPublisher<T, Error>.
     func getDataFromServer<T>(url : URL,
                               dataDecodingType: T.Type) -> AnyPublisher<T, Error> where T: Decodable
     

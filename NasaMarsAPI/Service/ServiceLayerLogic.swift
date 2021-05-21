@@ -12,6 +12,10 @@ protocol ServiceLayerLogicProtocol: AnyObject {
     
     var networkProtocol: NetworkProtocol { get }
     
+    /// Receives generic type data  from Nasa Server using Combine
+    /// - Parameter roverType: Nasa Rovers.
+    /// - Parameter endPointType: Returns which endpoint to receive data(eg. : Get data by Earth day or Mars(Sol)  day )
+    /// - Returns: Returns  AnyPublisher<RoverPhotosModel, Error>.
     func getRoverPhotos(roverType: RoverNames,
                         endPointType: Endpoint) -> AnyPublisher<RoverPhotosModel, Error>
     
@@ -21,6 +25,7 @@ protocol ServiceLayerLogicProtocol: AnyObject {
 final class UsersLogicController: ServiceLayerLogicProtocol {
     
     internal var networkProtocol: NetworkProtocol
+    
     init(networkProtocol : NetworkProtocol) {
         self.networkProtocol = networkProtocol
     }
