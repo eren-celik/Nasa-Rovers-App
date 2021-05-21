@@ -58,3 +58,9 @@ enum ViewsNames {
     case opportunity
     case spirit
 }
+
+enum RoverPhotosDefaultDate: String{
+    case curiosity = "2021-5-1"
+    case opportunity = "2018-03-04"
+    case spirit = "2009-12-23"
+}

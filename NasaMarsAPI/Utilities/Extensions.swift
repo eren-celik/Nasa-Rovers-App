@@ -16,6 +16,11 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 }
+extension Date {
+    var threeDayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -3, to: Date())!
+    }
+}
 
 // MARK: - VisualEffectBlur
 struct VisualEffectBlur<Content: View>: View {

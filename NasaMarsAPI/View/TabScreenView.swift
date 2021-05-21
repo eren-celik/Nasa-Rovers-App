@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct TabScreenView: View {
-    @ObservedObject private var apiService = NasaAPIViewModel()
-    @State var selectedTab : ViewsNames = ViewsNames.curiosity
+    @EnvironmentObject private var apiService : NasaAPIViewModel
+    @State private var selectedTab : ViewsNames = ViewsNames.curiosity
     
-    @State private var showDetailCard : Bool = false
     @State private var showSelectCameraFilter : Bool = false
+    @State private var showDetailCard : Bool = false
     @State private var showCalendar : Bool = false
+    
     @State private var cameraPosition : CameraName = CameraName.all
     @State private var data : Photo?
     
@@ -49,23 +50,15 @@ struct TabScreenView: View {
                     }
                     .tag(ViewsNames.spirit)
             }
-            .sheet(isPresented: $showCalendar, content: {
-                CalendarView()
-            })
+            .sheet(isPresented: $showCalendar,
+                   onDismiss: calendarDissmisFunctions,
+                   content: {
+                    CalendarView()
+                   }
+            )
             .onChange(of: selectedTab, perform: { value in
                 apiService.selectedPage = value
             })
-            .onAppear {
-                apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: "2021-5-1",
-                                                                                      page: 1,
-                                                                                      camera: cameraPosition))
-                apiService.getOpportunityRoverData(endPointType: .shared.getBySolDay(solDay: 5091,
-                                                                                     page: 1,
-                                                                                     camera: cameraPosition))
-                apiService.getSpiritRoverData(endPointType: .shared.getBySolDay(solDay: 2122,
-                                                                                page: 1,
-                                                                                camera: cameraPosition))
-            }
             
             if showSelectCameraFilter {
                 VisualEffectBlur(blurStyle: .dark)
@@ -82,17 +75,17 @@ struct TabScreenView: View {
                     .onDisappear {
                         switch selectedTab {
                         case .curiosity:
-                            apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: "2021-5-1",
+                            apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
                                                                                                   page: 1,
                                                                                                   camera: cameraPosition))
                         case .opportunity:
-                            apiService.getOpportunityRoverData(endPointType: .shared.getBySolDay(solDay: 5091,
-                                                                                                 page: 1,
-                                                                                                 camera: cameraPosition))
+                            apiService.getOpportunityRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
+                                                                                                    page: 1,
+                                                                                                    camera: cameraPosition))
                         case .spirit:
-                            apiService.getSpiritRoverData(endPointType: .shared.getBySolDay(solDay: 2122,
-                                                                                            page: 1,
-                                                                                            camera: cameraPosition))
+                            apiService.getSpiritRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
+                                                                                               page: 1,
+                                                                                               camera: cameraPosition))
                         }
                     }
             }
@@ -112,6 +105,24 @@ struct TabScreenView: View {
         }
         .animation(.easeInOut)
     }
+    
+    func calendarDissmisFunctions() {
+        switch selectedTab {
+        case .curiosity:
+            apiService.getCuriosityRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
+                                                                                  page: 1,
+                                                                                  camera: cameraPosition))
+        case .opportunity:
+            apiService.getOpportunityRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
+                                                                                    page: 1,
+                                                                                    camera: cameraPosition))
+        case .spirit:
+            apiService.getSpiritRoverData(endPointType: .shared.getByEarthDate(earthDate: apiService.selectedEarthDate,
+                                                                               page: 1,
+                                                                               camera: cameraPosition))
+        }
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -16,32 +16,29 @@ enum DataStatus{
 }
 
 final class NasaAPIViewModel : ObservableObject{
-    @Published var curiostyDataArray : [Photo] = PhotoArray()
+    @Published var curiostyDataArray    : [Photo] = PhotoArray()
     @Published var opportunityDataArray : [Photo] = PhotoArray()
-    @Published var spiritDataArray : [Photo] = PhotoArray()
+    @Published var spiritDataArray      : [Photo] = PhotoArray()
     
     @Published var photoDetailData : Photo?
     
-    @Published var selectedEarthDate : String = ""{
-        willSet(new){
-            print("Sol: " ,new)
-        }
-    }
-    @Published var selectedMarsDate : Int?{
-        willSet(new){
-            print("Sol: ", new ?? "NULL")
-        }
-    }
-    @Published var selectedPage : ViewsNames?{
-        willSet(new){
-            //print("view: " , new ?? "NULL")
-        }
-    }
+    @Published var selectedEarthDate : String = ""
+    @Published var selectedMarsDate : Int?
+    @Published var selectedPage : ViewsNames?
     
     @Published var dataStatus : DataStatus = .full
     
     private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
     private var cancellable = Set<AnyCancellable>()
+    let dateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    init() {
+        selectedEarthDate = dateFormatter.string(from: Date().threeDayBefore)
+    }
     
 }
 extension NasaAPIViewModel{

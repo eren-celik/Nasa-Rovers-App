@@ -42,11 +42,12 @@ struct SpiritRoverView: View {
         }
     }
     private var mainView : some View{
-        
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
                 ForEach(service.spiritDataArray) { value in
-                    PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
+                    PhotosCellView(onTapPhoto: $showDetailCard,
+                                   photoModel: value,
+                                   lastObject: true)
                         .environmentObject(service)
                 }
             }

@@ -45,9 +45,11 @@ struct CuriosityRoverView: View {
     var mainView: some View{
         ScrollView {
             LazyVGrid(columns: gridItemLayout , spacing : 20) {
-                ForEach(service.curiostyDataArray) { value in
-                    PhotosCellView(onTapPhoto: $showDetailCard, photoModel: value)
-                        .environmentObject(service)
+                ForEach(service.curiostyDataArray.indices) { index in
+                    PhotosCellView(onTapPhoto: $showDetailCard,
+                                   photoModel: service.curiostyDataArray[index],
+                                   lastObject: true)
+                    
                 }
             }
         }

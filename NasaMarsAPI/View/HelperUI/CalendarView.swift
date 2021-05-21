@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
-    let dateFormatter : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
+        
     @State private var selectedDate : Date = Date()
     @State private var solDay : String = ""
     
@@ -22,55 +16,24 @@ struct CalendarView: View {
     @ObservedObject private var helperService = NasaAPIViewModel()
     
     var body: some View {
-        VStack {
-            Form{
-                VStack {
-                    DatePicker(selection: $selectedDate,
-                               in: ...Date(),
-                               displayedComponents: .date) {
-                        Text("SelectDate")
-                    }
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .border(Color.black.opacity(0.2))
-                    .padding(.bottom,50)
-                    
-                    buttonRow
-                }
-                VStack(alignment: .leading) {
-                    Text("Enter Sol Day")
-                        .font(.system(.title3, design: .rounded))
-                        .fontWeight(.medium)
-                    TextField("Sol Day", text: $solDay)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .padding(.bottom,20)
-                        .padding(.top,5)
-                    
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Text("Back")
-                                .font(.system(.title3, design: .rounded))
-                                .bold()
-                        })
-                        .foregroundColor(.red)
+        NavigationView{
+            VStack {
+                Form{
+                    VStack {
+                        DatePicker(selection: $selectedDate,
+                                   in: ...Date(),
+                                   displayedComponents: .date) {}
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .border(Color.black.opacity(0.2))
+                        .padding(.bottom,50)
                         
-                        Spacer()
-
-                        
-                        Button(action: {
-                            helperService.selectedMarsDate = Int(solDay) ?? 0
-                            presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Text("Select")
-                                .font(.system(.title3, design: .rounded))
-                                .bold()
-                        })
+                        buttonRow
                     }
-                    .buttonStyle(BorderlessButtonStyle())
                 }
-                .padding(.top, 30)
+            }
+            .navigationTitle("Select Date")
+            .onAppear(){
+                selectedDate = helperService.dateFormatter.date(from: helperService.selectedEarthDate)!
             }
         }
     }
@@ -98,7 +61,7 @@ struct CalendarView: View {
             Spacer()
             
             Button(action: {
-                helperService.selectedEarthDate = dateFormatter.string(from: selectedDate)
+                helperService.selectedEarthDate = helperService.dateFormatter.string(from: selectedDate)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Select")
@@ -115,3 +78,40 @@ struct SelectDateView_Previews: PreviewProvider {
         CalendarView()
     }
 }
+
+
+//                VStack(alignment: .leading) {
+//                    Text("Enter Sol Day")
+//                        .font(.system(.title3, design: .rounded))
+//                        .fontWeight(.medium)
+//                    TextField("Sol Day", text: $solDay)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.numberPad)
+//                        .padding(.bottom,20)
+//                        .padding(.top,5)
+//
+//                    HStack {
+//                        Button(action: {
+//                            presentationMode.wrappedValue.dismiss()
+//                        }, label: {
+//                            Text("Back")
+//                                .font(.system(.title3, design: .rounded))
+//                                .bold()
+//                        })
+//                        .foregroundColor(.red)
+//
+//                        Spacer()
+//
+//
+//                        Button(action: {
+//                            helperService.selectedMarsDate = Int(solDay) ?? 0
+//                            presentationMode.wrappedValue.dismiss()
+//                        }, label: {
+//                            Text("Select")
+//                                .font(.system(.title3, design: .rounded))
+//                                .bold()
+//                        })
+//                    }
+//                    .buttonStyle(BorderlessButtonStyle())
+//                }
+//                .padding(.top, 30)
