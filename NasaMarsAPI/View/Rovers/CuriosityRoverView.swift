@@ -34,11 +34,12 @@ struct CuriosityRoverView: View {
                     }
                 }
             }
-
+            
             .navigationTitle(RoverNames.curiosity.rawValue)
             .toolbar {
                 CustomToolbarItems(showCalendar: $showCalendar,
-                                   showCameraFilterView: $showSelectCamera)
+                                   showCameraFilterView: $showSelectCamera,
+                                   arKitFileName: "curiosity")
             }
         }
     }

@@ -37,6 +37,8 @@
 		B04BA6EE2655A98D0034297C /* SpiritRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */; };
 		B04BA6F02655B30D0034297C /* PhotosCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6EF2655B30D0034297C /* PhotosCellView.swift */; };
 		B05959632656E14B00A4578E /* CustomToolBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05959622656E14B00A4578E /* CustomToolBarItems.swift */; };
+		B0A45EB72658500500BB1280 /* spirit.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B0A45EB52658500500BB1280 /* spirit.usdz */; };
+		B0A45EB82658500500BB1280 /* curiosity.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B0A45EB62658500500BB1280 /* curiosity.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritRoverView.swift; sourceTree = "<group>"; };
 		B04BA6EF2655B30D0034297C /* PhotosCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCellView.swift; sourceTree = "<group>"; };
 		B05959622656E14B00A4578E /* CustomToolBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolBarItems.swift; sourceTree = "<group>"; };
+		B0A45EB52658500500BB1280 /* spirit.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = spirit.usdz; sourceTree = "<group>"; };
+		B0A45EB62658500500BB1280 /* curiosity.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = curiosity.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +189,6 @@
 			children = (
 				10CA2F052655010C00AAC540 /* NasaMarsAPIApp.swift */,
 				10CA2F072655010C00AAC540 /* TabScreenView.swift */,
-				108F43112657F1BE0089A636 /* ARRoverView.swift */,
 				10FB386C26566956004A51B1 /* HelperUI */,
 				B04BA6E82655A93B0034297C /* Rovers */,
 			);
@@ -195,6 +198,7 @@
 		10CA2F31265501F200AAC540 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B0A45EB426584FDB00BB1280 /* 3D Models */,
 				10CA2F422655103300AAC540 /* RoverPhotosModel.swift */,
 			);
 			path = Model;
@@ -241,6 +245,7 @@
 		10FB386C26566956004A51B1 /* HelperUI */ = {
 			isa = PBXGroup;
 			children = (
+				108F43112657F1BE0089A636 /* ARRoverView.swift */,
 				B04BA6EF2655B30D0034297C /* PhotosCellView.swift */,
 				10CA2F5726555AD000AAC540 /* CalendarView.swift */,
 				10CA2F59265561BB00AAC540 /* RoverDetailCard.swift */,
@@ -259,6 +264,15 @@
 				B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */,
 			);
 			path = Rovers;
+			sourceTree = "<group>";
+		};
+		B0A45EB426584FDB00BB1280 /* 3D Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0A45EB62658500500BB1280 /* curiosity.usdz */,
+				B0A45EB52658500500BB1280 /* spirit.usdz */,
+			);
+			path = "3D Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +386,8 @@
 			files = (
 				10CA2F362655029300AAC540 /* cameraInformationByDate.json in Resources */,
 				10CA2F0D2655011200AAC540 /* Preview Assets.xcassets in Resources */,
+				B0A45EB72658500500BB1280 /* spirit.usdz in Resources */,
+				B0A45EB82658500500BB1280 /* curiosity.usdz in Resources */,
 				10CA2F39265502CB00AAC540 /* getPhotosByEarthDate.json in Resources */,
 				10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */,
 			);

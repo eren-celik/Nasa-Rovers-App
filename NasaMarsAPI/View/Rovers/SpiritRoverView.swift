@@ -37,7 +37,8 @@ struct SpiritRoverView: View {
             .navigationTitle(RoverNames.spirit.rawValue)
             .toolbar {
                 CustomToolbarItems(showCalendar: $showCalendar,
-                                   showCameraFilterView: $showSelectCamera)
+                                   showCameraFilterView: $showSelectCamera,
+                                   arKitFileName: "spirit")
             }
         }
     }

@@ -37,7 +37,8 @@ struct OpportunityRoverView: View {
             .navigationTitle(RoverNames.opportunity.rawValue)
             .toolbar {
                 CustomToolbarItems(showCalendar: $showCalendar,
-                                   showCameraFilterView: $showSelectCamera)
+                                   showCameraFilterView: $showSelectCamera,
+                                   arKitFileName: "spirit")
             }
         }
     }
