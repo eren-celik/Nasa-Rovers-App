@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct CameraFilterView: View {
-    @Binding var cameraPositions: CameraName
-    @Binding var closeCard : Bool
+    @Binding var cameraPositions : CameraName
+    @Binding var currentViewName : ViewsNames
+    @Binding var closeCard       : Bool
+    
     @State private var showDropDownMenu : Bool = false
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("Select the Camera you want to filter")
+                .font(.system(.title3,
+                              design: .rounded))
+                .padding([.leading,.top], 10)
             DisclosureGroup(cameraPositions.rawValue, isExpanded: $showDropDownMenu) {
                 VStack(alignment: .leading){
-                    ForEach(CameraName.allCases , id: \.self) { value in
+                    ForEach(selectedTab(), id: \.self) { value in
                         HStack {
                             Text(value.rawValue)
                                 .font(.system(.body, design: .rounded))
@@ -27,12 +33,15 @@ struct CameraFilterView: View {
                         }
                         .onTapGesture {
                             cameraPositions = value
-                            showDropDownMenu.toggle()
+                            withAnimation {
+                                showDropDownMenu.toggle()
+                            }
                             closeCard.toggle()
                         }
                         Divider()
                     }
-                }.frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
             }
             .font(.system(size: 20,
                           weight: .light,
@@ -43,13 +52,14 @@ struct CameraFilterView: View {
                                         style: .circular))
             .padding()
             .onTapGesture {
-                showDropDownMenu.toggle()
+                withAnimation {
+                    showDropDownMenu.toggle()
+                }
             }
-            .animation(.spring(response: 0.4,
-                               dampingFraction: 0.7,
-                               blendDuration: 0))
         }
-        .background(Color.white)
+        .animation(.spring(response: 0.4,
+                           dampingFraction: 0.7,
+                           blendDuration: 0))
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 20,
                                     style: .circular))
@@ -60,11 +70,23 @@ struct CameraFilterView: View {
         )
         
     }
+    
+    private func selectedTab() -> [CameraName] {
+        switch currentViewName{
+        case .curiosity:
+            return CameraName.curiosityAvalibleCamera
+        case .opportunity:
+            return CameraName.oppurtunityAvabileCamera
+        case .spirit:
+            return CameraName.spiritAvalibleCamera
+        }
+    }
 }
 
 struct CameraFilterView_Previews: PreviewProvider {
     static var previews: some View {
         CameraFilterView(cameraPositions: .constant(CameraName.CHEMCAM),
+                         currentViewName: .constant(.curiosity),
                          closeCard: .constant(false))
     }
 }

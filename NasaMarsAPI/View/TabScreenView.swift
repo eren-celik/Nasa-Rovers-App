@@ -76,6 +76,7 @@ struct TabScreenView: View {
                         }
                     }
                 CameraFilterView(cameraPositions: $cameraPosition,
+                                 currentViewName: $selectedTab,
                                  closeCard: $showSelectCameraFilter)
                     .animation(.easeInOut)
                     .onDisappear {

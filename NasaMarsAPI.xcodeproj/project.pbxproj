@@ -198,6 +198,7 @@
 		10CA2F32265501F900AAC540 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */,
 				10CA2F4C2655495E00AAC540 /* NasaAPIViewModel.swift */,
 			);
 			path = ViewModel;
@@ -210,7 +211,6 @@
 				10CA2F4A2655491200AAC540 /* Endpoints.swift */,
 				10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */,
 				10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */,
-				10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

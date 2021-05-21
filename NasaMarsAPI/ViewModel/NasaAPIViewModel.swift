@@ -34,7 +34,7 @@ final class NasaAPIViewModel : ObservableObject{
     }
     @Published var selectedPage : ViewsNames?{
         willSet(new){
-            print("view: " , new ?? "NULL")
+            //print("view: " , new ?? "NULL")
         }
     }
     

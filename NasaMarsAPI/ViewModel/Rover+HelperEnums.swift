@@ -19,34 +19,17 @@ enum CameraName: String, CaseIterable {
     case MINITES    = "Miniature Thermal Emission Spectrometer (Mini-TES)"
     case all        = "All camera positions"
 }
-
-enum CuriosityAvalibleCameras :String, CaseIterable{
-    case FHAZ       = "Front Hazard Avoidance Camera"
-    case RHAZ       = "Rear Hazard Avoidance Camera"
-    case MAST       = "Mast Camera"
-    case CHEMCAM    = "Chemistry and Camera Complex"
-    case MAHLI      = "Mars Hand Lens Imager"
-    case MARDI      = "Mars Descent Imager"
-    case NAVCAM     = "Navigation Camera"
-}
-
-enum OpportunityAvalibleCameras: String, CaseIterable {
-    
-    case FHAZ = "Front Hazard Avoidance Camera"
-    case RHAZ =  "Rear Hazard Avoidance Camera"
-    case NAVCAM = "Navigation Camera"
-    case PANCAM = "Panoramic Camera"
-    case MINITES = "Miniature Thermal Emission Spectrometer (Mini-TES)"
-    //Todo : Add and try (return rawValue)
-}
-enum SpiritAvalibleCameras: String, CaseIterable {
-    
-    case FHAZ = "Front Hazard Avoidance Camera"
-    case RHAZ =  "Rear Hazard Avoidance Camera"
-    case NAVCAM = "Navigation Camera"
-    case PANCAM = "Panoramic Camera"
-    case MINITES = "Miniature Thermal Emission Spectrometer (Mini-TES)"
-    //Todo : Add and try (return rawValue)
+extension CameraName{
+    /// Gives an rovers Avalible Camera
+    static var curiosityAvalibleCamera : [CameraName] {
+        return [.FHAZ, .RHAZ, .MAST ,.CHEMCAM, .MAHLI, .MARDI, .NAVCAM ]
+    }
+    static var oppurtunityAvabileCamera : [CameraName] {
+        return [.FHAZ, .RHAZ, .NAVCAM, .PANCAM, .MINITES ]
+    }
+    static var spiritAvalibleCamera : [CameraName] {
+        return [.FHAZ, .RHAZ, .NAVCAM, .PANCAM, .MINITES ]
+    }
 }
 
 enum RoverNames: String , CaseIterable {
