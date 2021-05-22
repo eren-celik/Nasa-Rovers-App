@@ -22,7 +22,7 @@ protocol ServiceLayerLogicProtocol: AnyObject {
 }
 
 
-final class UsersLogicController: ServiceLayerLogicProtocol {
+final class ServicePhotoLogicController: ServiceLayerLogicProtocol {
     
     internal var networkProtocol: NetworkProtocol
     

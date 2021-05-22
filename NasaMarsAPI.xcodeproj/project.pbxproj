@@ -14,13 +14,13 @@
 		10CA2F0D2655011200AAC540 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F0C2655011200AAC540 /* Preview Assets.xcassets */; };
 		10CA2F182655011200AAC540 /* NasaMarsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F172655011200AAC540 /* NasaMarsAPITests.swift */; };
 		10CA2F232655011200AAC540 /* NasaMarsAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F222655011200AAC540 /* NasaMarsAPIUITests.swift */; };
-		10CA2F362655029300AAC540 /* cameraInformationByDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* cameraInformationByDate.json */; };
-		10CA2F39265502CB00AAC540 /* getPhotosByEarthDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */; };
+		10CA2F362655029300AAC540 /* exampleJsonDataWithOneCamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* exampleJsonDataWithOneCamera.json */; };
+		10CA2F39265502CB00AAC540 /* exampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* exampleData.json */; };
 		10CA2F3D2655056800AAC540 /* ServiceLayerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */; };
 		10CA2F432655103300AAC540 /* RoverPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F422655103300AAC540 /* RoverPhotosModel.swift */; };
 		10CA2F472655124400AAC540 /* NasaAPINetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */; };
-		10CA2F482655157E00AAC540 /* cameraInformationByDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* cameraInformationByDate.json */; };
-		10CA2F492655158100AAC540 /* getPhotosByEarthDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */; };
+		10CA2F482655157E00AAC540 /* exampleJsonDataWithOneCamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F352655029300AAC540 /* exampleJsonDataWithOneCamera.json */; };
+		10CA2F492655158100AAC540 /* exampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 10CA2F38265502CB00AAC540 /* exampleData.json */; };
 		10CA2F4B2655491200AAC540 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4A2655491200AAC540 /* Endpoints.swift */; };
 		10CA2F4D2655495E00AAC540 /* RoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4C2655495E00AAC540 /* RoversViewModel.swift */; };
 		10CA2F50265549A500AAC540 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10CA2F4F265549A500AAC540 /* SDWebImageSwiftUI */; };
@@ -36,8 +36,16 @@
 		B04BA6EE2655A98D0034297C /* SpiritRoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6ED2655A98D0034297C /* SpiritRoverView.swift */; };
 		B04BA6F02655B30D0034297C /* PhotosCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA6EF2655B30D0034297C /* PhotosCellView.swift */; };
 		B05959632656E14B00A4578E /* CustomToolBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05959622656E14B00A4578E /* CustomToolBarItems.swift */; };
+		B06C06FF26594E8800FF43AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FB386D2656871D004A51B1 /* Extensions.swift */; };
+		B06C0700265956BA00FF43AA /* ServiceLayerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */; };
+		B06C070126595E6100FF43AA /* RoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4C2655495E00AAC540 /* RoversViewModel.swift */; };
 		B0A45EB72658500500BB1280 /* spirit.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B0A45EB52658500500BB1280 /* spirit.usdz */; };
 		B0A45EB82658500500BB1280 /* curiosity.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B0A45EB62658500500BB1280 /* curiosity.usdz */; };
+		B0AF73BB26593282001794E8 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F51265549B800AAC540 /* NetworkProtocol.swift */; };
+		B0AF73BC26593352001794E8 /* RoverPhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F422655103300AAC540 /* RoverPhotosModel.swift */; };
+		B0AF73BE265933B1001794E8 /* Rover+HelperEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F55265552A700AAC540 /* Rover+HelperEnums.swift */; };
+		B0AF73BF265933FC001794E8 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F4A2655491200AAC540 /* Endpoints.swift */; };
+		B0AF73C426593857001794E8 /* ServiceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA2F5326554A2F00AAC540 /* ServiceHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +79,8 @@
 		10CA2F1E2655011200AAC540 /* NasaMarsAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NasaMarsAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CA2F222655011200AAC540 /* NasaMarsAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaMarsAPIUITests.swift; sourceTree = "<group>"; };
 		10CA2F242655011200AAC540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		10CA2F352655029300AAC540 /* cameraInformationByDate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraInformationByDate.json; sourceTree = "<group>"; };
-		10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = getPhotosByEarthDate.json; sourceTree = "<group>"; };
+		10CA2F352655029300AAC540 /* exampleJsonDataWithOneCamera.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleJsonDataWithOneCamera.json; sourceTree = "<group>"; };
+		10CA2F38265502CB00AAC540 /* exampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleData.json; sourceTree = "<group>"; };
 		10CA2F3C2655056800AAC540 /* ServiceLayerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerLogic.swift; sourceTree = "<group>"; };
 		10CA2F422655103300AAC540 /* RoverPhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosModel.swift; sourceTree = "<group>"; };
 		10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPINetworkTest.swift; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 		10CA2F162655011200AAC540 /* NasaMarsAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				10CA2F352655029300AAC540 /* exampleJsonDataWithOneCamera.json */,
+				10CA2F38265502CB00AAC540 /* exampleData.json */,
 				10CA2F172655011200AAC540 /* NasaMarsAPITests.swift */,
 				10CA2F192655011200AAC540 /* Info.plist */,
 				10CA2F462655124400AAC540 /* NasaAPINetworkTest.swift */,
@@ -234,8 +244,6 @@
 		10CA2F37265502A700AAC540 /* JsonData */ = {
 			isa = PBXGroup;
 			children = (
-				10CA2F352655029300AAC540 /* cameraInformationByDate.json */,
-				10CA2F38265502CB00AAC540 /* getPhotosByEarthDate.json */,
 			);
 			path = JsonData;
 			sourceTree = "<group>";
@@ -381,11 +389,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10CA2F362655029300AAC540 /* cameraInformationByDate.json in Resources */,
+				10CA2F362655029300AAC540 /* exampleJsonDataWithOneCamera.json in Resources */,
 				10CA2F0D2655011200AAC540 /* Preview Assets.xcassets in Resources */,
 				B0A45EB72658500500BB1280 /* spirit.usdz in Resources */,
 				B0A45EB82658500500BB1280 /* curiosity.usdz in Resources */,
-				10CA2F39265502CB00AAC540 /* getPhotosByEarthDate.json in Resources */,
+				10CA2F39265502CB00AAC540 /* exampleData.json in Resources */,
 				10CA2F0A2655011200AAC540 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,8 +402,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10CA2F482655157E00AAC540 /* cameraInformationByDate.json in Resources */,
-				10CA2F492655158100AAC540 /* getPhotosByEarthDate.json in Resources */,
+				10CA2F482655157E00AAC540 /* exampleJsonDataWithOneCamera.json in Resources */,
+				10CA2F492655158100AAC540 /* exampleData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,8 +447,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0AF73BB26593282001794E8 /* NetworkProtocol.swift in Sources */,
+				B06C0700265956BA00FF43AA /* ServiceLayerLogic.swift in Sources */,
+				B06C06FF26594E8800FF43AA /* Extensions.swift in Sources */,
+				B06C070126595E6100FF43AA /* RoversViewModel.swift in Sources */,
 				10CA2F472655124400AAC540 /* NasaAPINetworkTest.swift in Sources */,
+				B0AF73BC26593352001794E8 /* RoverPhotosModel.swift in Sources */,
+				B0AF73C426593857001794E8 /* ServiceHelpers.swift in Sources */,
+				B0AF73BF265933FC001794E8 /* Endpoints.swift in Sources */,
 				10CA2F182655011200AAC540 /* NasaMarsAPITests.swift in Sources */,
+				B0AF73BE265933B1001794E8 /* Rover+HelperEnums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

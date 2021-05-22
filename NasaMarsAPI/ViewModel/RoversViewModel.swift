@@ -10,7 +10,7 @@ import Combine
 
 
 final class RoversViewModel : ObservableObject{
-    private let serviceLayer = UsersLogicController(networkProtocol: NetworkController())
+    private let serviceLayer = ServicePhotoLogicController(networkProtocol: NetworkController())
     private var cancellable = Set<AnyCancellable>()
     
     @Published var curiostyDataArray    : [Photo] = PhotoArray()
