@@ -40,7 +40,18 @@ struct OpportunityRoverView: View {
             }
         }
     }
-    
+}
+
+struct Opportunity_Previews: PreviewProvider {
+    static var previews: some View {
+        OpportunityRoverView(showSelectCamera: .constant(false),
+                             showDetailCard: .constant(false),
+                             showCalendar: .constant(false))
+            .environmentObject(RoversViewModel())
+    }
+}
+
+extension OpportunityRoverView{
     private var mainView: some View {
         ScrollView {
             LazyVGrid(columns: ViewsHelper.gridItemLayout , spacing : 20) {
@@ -56,14 +67,5 @@ struct OpportunityRoverView: View {
                 }
             }
         }
-    }
-}
-
-struct Opportunity_Previews: PreviewProvider {
-    static var previews: some View {
-        OpportunityRoverView(showSelectCamera: .constant(false),
-                             showDetailCard: .constant(false),
-                             showCalendar: .constant(false))
-            .environmentObject(RoversViewModel())
     }
 }

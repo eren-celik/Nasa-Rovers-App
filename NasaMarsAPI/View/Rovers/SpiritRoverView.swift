@@ -39,6 +39,17 @@ struct SpiritRoverView: View {
             }
         }
     }
+}
+
+struct Spirit_Previews: PreviewProvider {
+    static var previews: some View {
+        SpiritRoverView(showSelectCamera: .constant(false),
+                        showDetailCard: .constant(false),
+                        showCalendar: .constant(false))
+    }
+}
+
+extension SpiritRoverView{
     private var mainView : some View{
         ScrollView {
             LazyVGrid(columns: ViewsHelper.gridItemLayout , spacing : 20) {
@@ -54,13 +65,5 @@ struct SpiritRoverView: View {
                 }
             }
         }
-    }
-}
-
-struct Spirit_Previews: PreviewProvider {
-    static var previews: some View {
-        SpiritRoverView(showSelectCamera: .constant(false),
-                        showDetailCard: .constant(false),
-                        showCalendar: .constant(false))
     }
 }

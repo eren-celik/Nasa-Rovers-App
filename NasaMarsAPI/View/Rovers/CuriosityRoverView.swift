@@ -44,7 +44,18 @@ struct CuriosityRoverView: View {
             }
         }
     }
-    
+}
+
+struct CuriosityView_Previews: PreviewProvider {
+    static var previews: some View {
+        CuriosityRoverView(showSelectCamera: .constant(false),
+                           showDetailCard: .constant(false),
+                           showCalendar: .constant(false))
+            .environmentObject(RoversViewModel())
+    }
+}
+
+extension CuriosityRoverView{
     private var mainView: some View{
         ScrollView {
             LazyVGrid(columns: ViewsHelper.gridItemLayout , spacing : 20) {
@@ -61,15 +72,5 @@ struct CuriosityRoverView: View {
                 
             }
         }
-        
-    }
-}
-
-struct CuriosityView_Previews: PreviewProvider {
-    static var previews: some View {
-        CuriosityRoverView(showSelectCamera: .constant(false),
-                           showDetailCard: .constant(false),
-                           showCalendar: .constant(false))
-            .environmentObject(RoversViewModel())
     }
 }
