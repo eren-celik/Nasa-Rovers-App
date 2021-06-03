@@ -1,4 +1,5 @@
-# NasaMarsAPI
+# Nasa-Rovers-App
+
 Written in fully SwiftUI
 <h4>The application displays photos taken by 3 Rover on Mars by NASA</h4>
 <h5>If api key doesn’t work, create this adress <a href="url">https://api.nasa.gov/<a/><h5>
